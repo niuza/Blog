@@ -170,4 +170,13 @@
 #ds-thread #ds-reset .ds-comment-body:hover { background-color: #F1F1F1; -webkit-transition-delay: initial; -webkit-transition-duration: 0.4s; -webkit-transition-property: all; -webkit-transition-timing-function: initial; }
 #ds-thread #ds-reset .ds-replybox{padding: 0 0 0 80px !important;}
 #ds-recent-comments{padding:5px}
-#ds-thread #ds-reset .ds-post-button{font-weight: bold;font-size:12px;background:#DADADA;color:#877CC8;}
+#ds-thread #ds-reset .ds-post-button{font-family: ‘微软雅黑’‘Microsoft Yahei’!important;font-weight: bold;font-size:12px;background:#DADADA !important;color:#877CC8 !important;border: 5px solid #dedede;
+   -moz-border-radius: 3px;      /* Gecko browsers */
+   -webkit-border-radius: 3px;   /* Webkit browsers */
+   border-radius:3px;            /* W3C syntax */} 
+#ds-thread #ds-reset .ds-textarea-wrapper textarea {
+    background: url("http://obc2f9adw.bkt.clouddn.com/bg.png") no-repeat scroll  right top transparent;
+}
+ #ds-thread #ds-reset .ds-textarea-wrapper textarea:focus {
+    background-image: none;
+}

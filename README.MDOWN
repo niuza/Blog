@@ -1,3 +1,4 @@
 ## Blog
 - 这是一个Hexo做的博客的源文件
-- [牛杂辉的空间](http://xn--b2s50x458a.top)
+- 博客地址：[牛杂辉的空间](http://xn--b2s50x458a.top)
+- 部署位置：当前仓库gh-pages分支

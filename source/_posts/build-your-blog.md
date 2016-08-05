@@ -5,8 +5,11 @@ date: 2016-08-02 11:10:33
 
 tags:
 - Hexo
+categories:
+- Coding
 toc: true
 thumbnail: http://obc2f9adw.bkt.clouddn.com/static/images/%E5%B0%81%E9%9D%A2.jpg
+banner: http://obc2f9adw.bkt.clouddn.com/static/images/%E5%B0%81%E9%9D%A2.jpg
 ---
 20160804:
 提纲貌似和图片不能一起...有空想个办法让右边栏变成提纲，顺便让搜索框悬浮
@@ -14,11 +17,15 @@ thumbnail: http://obc2f9adw.bkt.clouddn.com/static/images/%E5%B0%81%E9%9D%A2.jpg
 
 20160805:
 搞了几天终于把自己的博客搞起来了，有空再完善完善，修改一下背景什么的
-有那个自定义文章模板有空再写写，我想我要去打机了
+有那个菜单修改有空再写写，我想我要去打机了，有空再看看下面
+
 
 
 这里把我搭建个人博客的过程贴出来了，如果你不想看我那么杂乱，可以去看详细参考 http://ibruce.info/2013/11/22/hexo-your-blog/
-{% qnimg 封面.jpg title:封面 alt:有空再完善一下我的博客 'class:class1 class2' extend:?imageView2/2/w/600 %}
+当然，这个博客是基于icarus这个博客做的，具体demo请查看 https://github.com/ppoffice/hexo-theme-icarus
+建议使用NexT主题，更简单 http://theme-next.iissnan.com/getting-started.html
+配置方面推荐看 http://www.jianshu.com/p/2640561e96f8
+{% qnimg 草泥马.gif title:草泥马 alt:我的心情就像... 'class:class1 class2' extend:?imageView2/2/w/600 %}
 <!--more-->
 ## 准备
 
@@ -112,7 +119,7 @@ CNAME可以放在Source文件夹下,不然每次部署都会删除的
 - README
 把README.MD文件的后缀名改成"MDOWN"然后扔到blog/source文件夹下即可，这样hexo不会解析，github也会将其作为MD文件解析
 
-### 添加文章,实现代码高亮
+### 添加编辑文章和页面,代码高亮
 - 添加文章
 ```hexo
 hexo new "postName"  #新建博文,其中postName是博文题目
@@ -151,16 +158,59 @@ icarus主题自带toc插件，在md文件中插入
 toc: true   
 可以自行修改\themes\icarus\source\css\_partial\article.styl 找到toc
 [为文章添加toc](http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/#淇敼Landscape涓婚鐨別js)
-
+- 添加文首图片
+banner
 - 为文章添加缩略图
 icarus主题自带缩略图插件，在md文件插入
 thumbnail: https://example.com/image.jpg  
+- 二级分类
+```
+categories
+- a
+- b
+```
 
+- 不使用模板
+layout: false
+- 搜索引擎
+```
+meta:
+- name="robots";content="noindex, follow"
+```
+- 修改文章模板
+scaffolds目录下的post.md
+```
+---
+title: {{ title }}
+date: {{ date }}
+tags:
+categories:
+toc:
+---
+```
 
+- 添加categories等等页面
+先看看站点_config.yml里面的category_dir是不categories
+添加页面
+```bash
+hexo n page "categories"
+```
+更改index.md,layout为categories，comments设置评论功能
+```
+---
+title: categories
+layout: "categories"
+type: "categories"
+comments: false
+---
 
-
-
-
+```
+修改`themes/jacman/_config.yml`文件
+``` md
+menu:
+    分类: /categories
+```
+---
 ### 编辑器
 
 如果页面中出现中文，应以UTF-8无BOM编码格式，所以不要用win自带的记事本
@@ -513,9 +563,9 @@ Analyse with 
 
 
 
+### 插入视频
 
-
-
+直接上传优酷，上传后优酷可以复制通用iframe代码或者HTML代码
 
 
 
@@ -644,9 +694,14 @@ echo -e "Press Any Key To Exit"
 read
 ```
 
-
-
-
+### 常见插件
+支持RSS：npm install hexo-generator-feed --save
+生成站点地图：npm install hexo-generator-sitemap --save
+生成百度站点地图：npm install hexo-generator-baidu-sitemap --save
+HTML 压缩：npm install hexo-html-minifier --save
+JavaScript 压缩：npm install hexo-uglify --save
+CSS 压缩插件：npm install hexo-clean-css --save
+SEO优化：npm install hexo-generator-seo-friendly-sitemap
 
 ### 使用七牛做图床
 
@@ -677,7 +732,8 @@ Next主题底部添加自定义信息 [为所有文章底部统一放点什么,
 
 添加音乐播放器 [为Hexo Next主题添加音乐播放器功能（二）](http://www.iamlj.com/2016/07/add-music-player-function-for-hexo/)
 
-
+添加照片流 [为 Hexo 博客做一个照片流，分享你喜欢的书和电影](
+https://yq.aliyun.com/articles/4200)
 
 ### 性能优化
 性能优化，备份，添加README等等[hexo博客搭建时遇到的一些问题](https://segmentfault.com/a/1190000003710962?_ea=336354)
@@ -716,6 +772,7 @@ Hexo运行在VPS的在线写作 [Hexo在线运行](http://xhay1122.com/2016/02/
 ### 推荐工具
 取色工具：TakeColor 8.0 CN
 笔记同步工具：为知笔记
+七牛图床：http://yotuku.cn/
 ### 常用网站
 [图标下载，ICON(PNG/ICO/ICNS)图标搜索下载 | EASYICON.NET](http://www.easyicon.net/)
 

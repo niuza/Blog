@@ -58,9 +58,14 @@ git push -u origin master
 [应用github pages创建自己的个人博客](http://jingyan.baidu.com/article/ed2a5d1f3732cb09f7be1745.html)
 创建成功后在gh-pages分支可以查看项目网页
 ### 购买域名，配置DNS
-
-购买中文域名去万网买，配置DNS请用DNSpod，在你的Github Pages项目下面弄个CNAME文件，设置项目的域名
-
+购买中文域名去**万网**买，配置DNS请用DNSpod
+如果是Pages项目病并不需要DNS解析，放个CNAME文件，设置项目的域名，然后域名解析写Github Pages服务器的ip就可以了，详细请查看Github Pages官方帮助
+###　更换域名
+更换域名后需要修改：
+_config.yml　修改url
+多说　更改主页
+CNAME　更换域名
+README.MD　可能需要换链接
 
 ## 创建Hexo博客
 ### 在本地创建Hexo博客
@@ -106,6 +111,25 @@ deploy:
   branch: master
   #冒号前面有空格
 ```
+
+### github常见问题
+- git push后在github上文件夹是灰色的？
+子文件夹下面有复制下来的仓库，把.git .gitignore文件都删掉，然后重新git add 、git commit、 git push，还是无法push的话先移出文件夹再push删除mode，移回来再push重新建立mode
+- 怎么建立删除分支？
+```git
+#在本地新建一个分支
+git branch Branch1
+#切换到你的新分支
+git checkout Branch1
+#将新分支发布在github上
+git push origin Branch1
+#在本地删除一个分支
+git branch -d Branch1
+#在github远程端删除一个分支
+git push origin :Branch1
+```
+
+
 ### 解决冲突问题
 mathjax和markdown渲染冲突问题
 请使用hexo-renderer-pandoc插件，用pandoc去代替默认的markdown渲染器，完美地解决了这个问题

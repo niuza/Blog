@@ -1,0 +1,79 @@
+# Menus
+menu:
+  主页: .
+  归档: /archives
+  分类: /categories
+  标签: /tags
+  关于: /about
+# Customize
+customize:
+    logo:
+        enabled: true
+        width: 40
+        height: 40
+        url: images/logo.png
+    profile:
+        enabled: true # Whether to show profile bar
+        avatar: css/images/avatar.png
+        gravatar: # Gravatar email address, if you enable Gravatar, your avatar config will be overriden
+        author: 牛杂辉
+        author_title: 欢迎来到牛杂辉的空间
+        location: 佛山南海, 中国
+        follow: http://weibo.com/u/1691060114/home?wvr=5&c=spr_sinamkt_buy_uc123_weibo_t001
+    highlight: monokai
+    sidebar: right # sidebar position, options: left, right
+    thumbnail: true # enable posts thumbnail, options: true, false
+    favicon: css/images/favicon.ico # path to favicon
+    social_links:
+        github: http://github.com/niuza
+        twitter: http://twitter.com/
+        wechat: https://wx.qq.com/
+        facebook: http://www.facebook.com/
+        youtube: https://youtube.com
+    social_link_tooltip: true # enable the social link tooltip, options: true, false
+since: 2016
+# Widgets
+widgets:
+    - recent_posts
+    - category
+    - archive
+    - tag
+    - tagcloud
+    - links
+
+# Search
+search:
+    insight: true # you need to install `hexo-generator-json-content` before using Insight Search
+    swiftype: # enter swiftype install key here
+    baidu: true # you need to disable other search engines to use Baidu search, options: true, false
+
+# Comment
+comment:
+    disqus: #hexo-theme-icarus # enter disqus shortname here
+    duoshuo: niuzablog
+    youyan: # enter youyan uid here
+
+duoshuo_hotartical: true
+# Share
+share: default # options: jiathis, bdshare, addtoany, default
+
+# Plugins
+plugins:
+    fancybox: true # options: true, false
+    google_analytics: # enter the tracking ID for your Google Analytics
+    google_site_verification: # enter Google site verification code
+    baidu_analytics: # enter Baidu Analytics hash key
+    scrollLoading: false
+
+# Miscellaneous
+miscellaneous:
+    open_graph: # see http://ogp.me
+        fb_app_id:
+        fb_admins:
+        twitter_id:
+        google_plus:
+    links:
+        Hexo: http://hexo.io
+        牛杂辉的微博: http://weibo.com/1691060114/profile?topnav=1&wvr=6
+        虎扑空间: http://my.hupu.com/26578465
+        牛杂辉的网易云音乐: http://music.163.com/#/user/home?id=20011615

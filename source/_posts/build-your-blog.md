@@ -5,8 +5,9 @@ date: 2016-08-02 11:10:33
 
 tags:
 - Hexo
+- Blog
 categories:
-- Coding
+- 编程
 toc: true
 thumbnail: http://obc2f9adw.bkt.clouddn.com/static/images/%E5%B0%81%E9%9D%A2.jpg
 banner: http://obc2f9adw.bkt.clouddn.com/static/images/%E5%B0%81%E9%9D%A2.jpg
@@ -342,6 +343,9 @@ npm install -S hexo-generator-json-content #安装插件支持
 ```
 ### 修改网站小图标
 修改themes/icarus/_cinfig.yml 找到favicon
+
+## 修改字体
+theme/.../source/vendor/open-sans/fonts/
 
 ### 配置多说
 1.去多说注册 

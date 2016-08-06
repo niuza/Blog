@@ -1,5 +1,6 @@
 ---
 title: 关于我
+layout: "page"
 banner: http://obc2f9adw.bkt.clouddn.com/QQ%E5%9B%BE%E7%89%8720140630155743.jpg
 ---
 ## 个人介绍

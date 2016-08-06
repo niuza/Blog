@@ -215,6 +215,9 @@ thumbnail: http://obc2f9adw.bkt.clouddn.com/static/images/
 banner: http://obc2f9adw.bkt.clouddn.com/static/images/
 ---
 {% qnimg 封面.jpg title:封面 alt:有空再完善一下我的博客 'class:class1 class2' extend:?imageView2/2/w/600 %}
+
+
+<!--more-->
 ```
 
 - 添加categories等等页面
@@ -630,8 +633,12 @@ http://www.arao.me/2015/hexo-next-theme-optimize-duoshuo/
 
 
 ### 增加404页面
-在source文件夹下面新增404.html
+在source文件夹下面新增404.html,不依赖layout就要在前面加layout: false
 ```html
+---
+layout: false
+title: "404 Not Found"
+---
 <!DOCTYPE HTML>
 
 <html>

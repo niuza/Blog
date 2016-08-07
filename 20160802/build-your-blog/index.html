@@ -16,7 +16,7 @@
 20160805:搞了几天终于把自己的博客搞起来了，有空再完善完善，修改一下背景什么的有那个菜单修改有空再写写，我想我要去打机了，有空再看看下面
 这里把我搭建个人博客的过程贴出来了，如果你不想看我那么杂乱，可以去看详细参考 http://ibruce.info/2013/11/22/hexo-your-blo">
 <meta property="og:image" content="http://obc2f9adw.bkt.clouddn.com/static/images/%E5%B0%81%E9%9D%A2.jpg">
-<meta property="og:updated_time" content="2016-08-07T09:43:46.497Z">
+<meta property="og:updated_time" content="2016-08-07T10:34:15.630Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Pages搭建个人博客详细过程">
 <meta name="twitter:description" content="20160804:提纲貌似和图片不能一起…有空想个办法让右边栏变成提纲，顺便让搜索框悬浮
@@ -255,7 +255,7 @@
         <a class="tag-link" href="/tags/Blog/">Blog</a>, <a class="tag-link" href="/tags/Hexo/">Hexo</a>
     </div>
 
-                        <i class="fa fa-file-word-o"></i>&nbsp;<span class="post-count">12,994</span>字
+                        <i class="fa fa-file-word-o"></i>&nbsp;<span class="post-count">13,080</span>字
 
                     </div>
                 
@@ -396,7 +396,7 @@
 <blockquote>
 <p>参考<br><a href="http://ibruce.info/2013/12/22/count-views-of-hexo/" target="_blank" rel="external">为hexo博客添加访问次数统计功能</a><br><a href="http://www.iamlj.com/2016/07/add-heat-function-for-hexo/" target="_blank" rel="external">为Hexo Next主题添加热度功能（一）</a><br><a href="http://crescentmoon.info/2014/12/11/popular-widget/" target="_blank" rel="external">使用LeanCloud平台为Hexo博客添加文章浏览量统计组件 | 心怀畏惧</a><br><a href="http://www.cnblogs.com/tengj/p/5365434.html" target="_blank" rel="external">hexo干货系列：（七）hexo安装统计插件</a><br><a href="http://cighao.com/2015/11/30/add-counter-to-hexo/" target="_blank" rel="external">Hexo yilia主题添加网站访客人数统计</a><br><a href="http://www.jeyzhang.com/hexo-next-add-post-views.html" target="_blank" rel="external">Hexo的NexT主题个性化：添加文章阅读量</a></p>
 </blockquote>
-<h3 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h3><p>直接上传优酷，上传后优酷可以复制通用iframe代码或者HTML代码</p>
+<h3 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h3><p>直接上传优酷，上传后优酷可以复制通用iframe代码或者HTML代码<br>禁止自动播放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;embed id=&quot;emswf&quot; src=&quot;abc.swf&quot; play=&quot;false&quot; flashvars=&quot;autoplay=false&amp;play=false&quot; menu=&quot;false&quot; hidden=&quot;false&quot; loop=&quot;false&quot;&gt;&lt;/embed&gt;</div></pre></td></tr></table></figure></p>
 <h3 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h3><p>npm install hexo-wordcount –save<br><a href="https://www.npmjs.com/package/hexo-wordcount" target="_blank" rel="external">hexo-wordcount</a></p>
 <h3 id="添加RSS"><a href="#添加RSS" class="headerlink" title="添加RSS"></a>添加RSS</h3><p>我觉得现在不需要安装啦，需要的看一下</p>
 <p>hexo提供了RSS的生成插件，需要手动安装和设置。步骤如下：</p>
@@ -414,7 +414,8 @@
 <p>上传源文件到git<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin git@github.com:niuza/Blog.git </div><div class="line">为远程Git更名为origin之后push源文件到master分支</div></pre></td></tr></table></figure></p>
 <p>新建文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"input commit name"</span></div><div class="line"><span class="built_in">read</span> answer</div><div class="line">git add . </div><div class="line">git commit -m <span class="variable">$answer</span></div><div class="line">git push -u origin master</div><div class="line"><span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"Press Any Key To Exit"</span></div><div class="line"><span class="built_in">read</span></div></pre></td></tr></table></figure></p>
 <h3 id="常见插件"><a href="#常见插件" class="headerlink" title="常见插件"></a>常见插件</h3><p>支持RSS：npm install hexo-generator-feed –save<br>生成站点地图：npm install hexo-generator-sitemap –save<br>生成百度站点地图：npm install hexo-generator-baidu-sitemap –save<br>HTML 压缩：npm install hexo-html-minifier –save<br>JavaScript 压缩：npm install hexo-uglify –save<br>CSS 压缩插件：npm install hexo-clean-css –save<br>SEO优化：npm install hexo-generator-seo-friendly-sitemap</p>
-<h3 id="使用七牛做图床"><a href="#使用七牛做图床" class="headerlink" title="使用七牛做图床"></a>使用七牛做图床</h3><p><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">Hexo七牛同步插件</a></p>
+<h3 id="使用七牛做图床"><a href="#使用七牛做图床" class="headerlink" title="使用七牛做图床"></a>使用七牛做图床</h3><p>注意图片名字最好不要有空格</p>
+<p><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">Hexo七牛同步插件</a></p>
 <p><a href="http://developer.qiniu.com/code/v6/api/kodo-api/index.html#image" target="_blank" rel="external">七牛图片处理API</a></p>
 <h3 id="主题的修改"><a href="#主题的修改" class="headerlink" title="主题的修改"></a>主题的修改</h3><p>简单介绍了一下如何去修改主题 <a href="http://www.huangyunkun.com/2014/03/18/hexo_ejs_template/" target="_blank" rel="external">Hexo模板系统和pacman的修改</a></p>
 <p>修改背景图，添加Fork图标什么的 <a href="http://www.jianshu.com/p/70343b7c2fd3" target="_blank" rel="external">Hexo 主题Light修改教程</a></p>
@@ -456,7 +457,7 @@
 
 </div>
 
-    <a data-url="http://niuza.tech/20160802/build-your-blog/" data-id="cirkgzv370003kgkajzs6noki" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://niuza.tech/20160802/build-your-blog/" data-id="cirkh3e4f0001akkayuj4ahxl" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

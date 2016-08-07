@@ -16,7 +16,7 @@
 20160805:搞了几天终于把自己的博客搞起来了，有空再完善完善，修改一下背景什么的有那个菜单修改有空再写写，我想我要去打机了，有空再看看下面
 这里把我搭建个人博客的过程贴出来了，如果你不想看我那么杂乱，可以去看详细参考 http://ibruce.info/2013/11/22/hexo-your-blo">
 <meta property="og:image" content="http://obc2f9adw.bkt.clouddn.com/static/images/%E5%B0%81%E9%9D%A2.jpg">
-<meta property="og:updated_time" content="2016-08-07T01:47:48.503Z">
+<meta property="og:updated_time" content="2016-08-07T09:43:46.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Github Pages搭建个人博客详细过程">
 <meta name="twitter:description" content="20160804:提纲貌似和图片不能一起…有空想个办法让右边栏变成提纲，顺便让搜索框悬浮
@@ -160,11 +160,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                4
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                4
+                6
                 <span>标签</span>
             </div>
         </div>
@@ -255,7 +255,7 @@
         <a class="tag-link" href="/tags/Blog/">Blog</a>, <a class="tag-link" href="/tags/Hexo/">Hexo</a>
     </div>
 
-                        <i class="fa fa-file-word-o"></i>&nbsp;<span class="post-count">12,963</span>字
+                        <i class="fa fa-file-word-o"></i>&nbsp;<span class="post-count">12,994</span>字
 
                     </div>
                 
@@ -410,7 +410,7 @@
 <p>站点配置文章中设定<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="attr">index_generator:</span></div><div class="line">  per_page:<span class="number">5</span></div><div class="line"></div><div class="line"><span class="attr">archive_generator:</span></div><div class="line">  per_page:<span class="number">20</span></div><div class="line">  yearly:<span class="literal">true</span></div><div class="line">  monthly:<span class="literal">true</span></div><div class="line"></div><div class="line"><span class="attr">tag_generator:</span></div><div class="line">  per_page:<span class="number">10</span></div></pre></td></tr></table></figure></p>
 <p>多说评论组件提供热评文章功能, 仅在文章页面显示<br>站点/主题配置文件中设置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 多说热评文章 true 或者 false</span></div><div class="line"><span class="attr">duoshuo_hotartical:</span><span class="literal">true</span></div></pre></td></tr></table></figure></p>
 <h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>这些优化我都还没有做，占个坑慢慢搞哈哈</p>
-<h3 id="写一段简单的脚本"><a href="#写一段简单的脚本" class="headerlink" title="写一段简单的脚本"></a>写一段简单的脚本</h3><p>shell脚本，保存为.sh，如果已经安装git和配置git的环境变量之后，在windows环境下直接打开会自动启动git bash<br>一般用到的部署<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash </div><div class="line">hexo clean #清除hexo编译文件</div><div class="line">hexo g     #重新编译博客</div><div class="line">hexo d     #部署博客</div></pre></td></tr></table></figure></p>
+<h3 id="写一段简单的脚本"><a href="#写一段简单的脚本" class="headerlink" title="写一段简单的脚本"></a>写一段简单的脚本</h3><p>shell脚本，保存为.sh，如果已经安装git和配置git的环境变量之后，在windows环境下直接打开会自动启动git bash<br>虽然git bash可以直接运行shell脚本，但是windows下最好使用Cygwin,git bash也是集成了Cygwin<br>一般用到的部署<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash </div><div class="line">hexo clean #清除hexo编译文件</div><div class="line">hexo g     #重新编译博客</div><div class="line">hexo d     #部署博客</div></pre></td></tr></table></figure></p>
 <p>上传源文件到git<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin git@github.com:niuza/Blog.git </div><div class="line">为远程Git更名为origin之后push源文件到master分支</div></pre></td></tr></table></figure></p>
 <p>新建文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"input commit name"</span></div><div class="line"><span class="built_in">read</span> answer</div><div class="line">git add . </div><div class="line">git commit -m <span class="variable">$answer</span></div><div class="line">git push -u origin master</div><div class="line"><span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"Press Any Key To Exit"</span></div><div class="line"><span class="built_in">read</span></div></pre></td></tr></table></figure></p>
 <h3 id="常见插件"><a href="#常见插件" class="headerlink" title="常见插件"></a>常见插件</h3><p>支持RSS：npm install hexo-generator-feed –save<br>生成站点地图：npm install hexo-generator-sitemap –save<br>生成百度站点地图：npm install hexo-generator-baidu-sitemap –save<br>HTML 压缩：npm install hexo-html-minifier –save<br>JavaScript 压缩：npm install hexo-uglify –save<br>CSS 压缩插件：npm install hexo-clean-css –save<br>SEO优化：npm install hexo-generator-seo-friendly-sitemap</p>
@@ -456,7 +456,7 @@
 
 </div>
 
-    <a data-url="http://niuza.tech/20160802/build-your-blog/" data-id="cirjya5ad00011gkaj2g5ztn2" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://niuza.tech/20160802/build-your-blog/" data-id="cirkg6rx20001qwkas1i3av33" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -611,6 +611,25 @@
                     <li>
                         
                         <div class="item-thumbnail">
+                            <a href="/20160807/joan-comic/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://obc2f9adw.bkt.clouddn.com/static/images/comic-cover.jpg)" alt="脑洞超大超重口味的漫画" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/日记/">日记</a></p>
+                            <p class="item-title"><a href="/20160807/joan-comic/" class="title">脑洞超大超重口味的漫画</a></p>
+                            <p class="item-date"><time datetime="2016-08-07T09:47:05.000Z" itemprop="datePublished">2016-08-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
                             <a href="/20160806/tieba-unusual/" class="thumbnail">
     
     
@@ -674,7 +693,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/作品/">作品</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/作品/">作品</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -683,7 +702,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
@@ -692,7 +711,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贴吧/">贴吧</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扯蛋/">扯蛋</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/漫画/">漫画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贴吧/">贴吧</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -701,7 +720,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a> <a href="/tags/贴吧/" style="font-size: 10px;">贴吧</a>
+            <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/扯蛋/" style="font-size: 10px;">扯蛋</a> <a href="/tags/漫画/" style="font-size: 10px;">漫画</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a> <a href="/tags/贴吧/" style="font-size: 10px;">贴吧</a>
         </div>
     </div>
 

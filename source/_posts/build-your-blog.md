@@ -39,7 +39,7 @@ banner: http://obc2f9adw.bkt.clouddn.com/static/images/%E5%B0%81%E9%9D%A2.jpg
 - 安装Hexo
 - 安装Markdown编辑器
 - [配置git环境变量](http://jingyan.baidu.com/article/9f7e7ec0b17cac6f2815548d.html)
-### Git操作
+### Git的push操作
 Git的通用操作，可以在本地做好版本控制后，push到Git的服务器,可以是Github
 ```git
 # Create a new repository on the command line
@@ -50,6 +50,15 @@ git remote add origin https://github.com/yourId/repoName.git
 git push -u origin master
 # Push an existing repository from the command line
 ```
+
+### Git的pull操作
+``` git
+# 强制覆盖本地文件
+git fetch --all  
+git reset --hard origin/master 
+git pull
+```
+
 ### Github配置SSH
 [Github配置SSH连接](http://jingyan.baidu.com/article/a65957f4e91ccf24e77f9b11.html)
 
@@ -827,7 +836,9 @@ Hexo运行在VPS的在线写作 [Hexo在线运行](http://xhay1122.com/2016/02/
 [更换主题和同步](https://zhuanlan.zhihu.com/p/20583019)
 [插件](http://www.jianshu.com/p/3e341d86acd2)
 ### 不错的博客
+
 [James Pan's Blog](https://blog.jamespan.me)
+[窗外临街](http://peihao.space/)
 [Jing's Blog](http://www.iamlj.com/)
 [SHOW TIME](http://www.yuedongxu.cn/)
 [winwill2012博客github备份](https://github.com/winwill2012/hexo)

@@ -10,7 +10,7 @@
 <meta property="og:url" content="http://niuza.tech/20160818/how-to-markdown/index.html">
 <meta property="og:site_name" content="牛杂辉的空间">
 <meta property="og:image" content="http://obc2f9adw.bkt.clouddn.com/static/images/">
-<meta property="og:updated_time" content="2016-08-18T07:43:11.136Z">
+<meta property="og:updated_time" content="2016-08-18T07:57:23.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="认识Markdown">
 <meta name="twitter:image" content="http://obc2f9adw.bkt.clouddn.com/static/images/">
@@ -236,7 +236,7 @@
 
                         
                         
-                        <i class="fa fa-file-word-o"></i>&nbsp;<span class="post-count">965</span>字
+                        <i class="fa fa-file-word-o"></i>&nbsp;<span class="post-count">1,371</span>字
 
                     </div>
                 
@@ -259,8 +259,37 @@
 <h3 id="Markdown用法"><a href="#Markdown用法" class="headerlink" title="Markdown用法"></a>Markdown用法</h3><p>下面列举一些我平时经常遇到的一些问题和一些经常忘记的用法，至于一些基本的语法或者更高级的应用可以去看看参考<br>1.Markdown原文里面缩进在渲染后都没有了，所以用 <code>&amp;#160;</code>或者<code>&amp;nbsp;</code> 表示空格<br>2.Markdown特殊符号的显示<br>Markdown是HTML标记的一部分，所以使用起来会受到HTML的一些限制<br>比如&lt;&gt;可以正常显示，但是类似<code>&lt;abc&gt;</code>的符号就会变成html标签了，想正常显示最好写在两个反引号``或者代码块里面<br>如果你要在正文用，请使用HTML的编码写<br><code>&lt;</code>    <code>&amp;lt;</code><br><code>&lt;=</code>   <code>&amp;le;</code><br><code>&gt;</code>    <code>&amp;gt;</code><br><code>&gt;=</code>   <code>&amp;ge;</code><br>至于其他特殊符号请参考:<a href="http://tool.chinaz.com/Tools/htmlchar.aspx" target="_blank" rel="external">HTML特殊符号对照表 - 站长工具</a><br>其他转义后可以显示的字符：<br><code>\\</code> 反斜杠<br><code>\*</code> 星号<br><code>\_</code>下划线<br><code>\{\}</code> 大括号<br><code>\[\]</code> 中括号<br><code>\(\)</code> 小括号<br><code>\#</code> 井号<br><code>\+</code>加号<br><code>\-</code> 减号<br><code>\.</code> 英文句号<br><code>\!</code> 感叹号<br>\<code>反引号
 3.**上标和下标**
 上标   2&lt;sup&gt;16&lt;/sup&gt;</code>2<sup>16</sup><code>下标   2&lt;sub&gt;16&lt;/sub&gt;</code>2<sub>16</sub><code>4.**超链接**
-超链接</code><a href="http://www.baidu.com" target="_blank" rel="external">百度</a><code>图片</code><img src="http://mouapp.com/mou_128.png" alt="icon">`<br>5.<strong>多级列表</strong><br>主要是三种不同标号和换行的灵活使用，不同层次之间要有缩进，标号类型顺序可以变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* 一级</div><div class="line">    - 二级</div><div class="line">        + 三级</div></pre></td></tr></table></figure></p>
-<p>6.<strong>横线</strong><br><code>---</code><br>7.<strong>文本</strong><br><code>*斜体文本*</code>   <em>斜体文本</em><br><code>**粗体文本**</code>   <strong>粗体文本</strong><br><code>***粗斜体文本***</code>    <strong><em>粗斜体文本</em></strong><br>8.<strong>添加脚注</strong><br><code>A[^a]</code><br><code>[^a]:abc</code><br>A<a href="abc">^a</a></p>
+超链接</code><a href="http://www.baidu.com" target="_blank" rel="external">百度</a><code>图片</code><img src="http://mouapp.com/mou_128.png" alt="icon"><code>邮箱</code><a href="&#x6d;&#x61;&#x69;&#108;&#116;&#111;&#58;&#116;&#101;&#x73;&#x74;&#x40;&#100;&#111;&#109;&#x61;&#105;&#110;&#x2e;&#x63;&#x6f;&#109;">&#116;&#101;&#x73;&#x74;&#x40;&#100;&#111;&#109;&#x61;&#105;&#110;&#x2e;&#x63;&#x6f;&#109;</a>`<br>5.<strong>多级列表</strong><br>主要是三种不同标号和换行的灵活使用，不同层次之间要有缩进，标号类型顺序可以变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* 一级</div><div class="line">    - 二级</div><div class="line">        + 三级</div></pre></td></tr></table></figure></p>
+<p>6.<strong>横线</strong><br><code>---</code><br>7.<strong>文本</strong><br><code>*斜体文本*</code>   <em>斜体文本</em><br><code>**粗体文本**</code>   <strong>粗体文本</strong><br><code>***粗斜体文本***</code>    <strong><em>粗斜体文本</em></strong><br><code>&lt;small&gt;文本内容&lt;/small&gt;</code> <small>文本内容</small><br><code>~~~单行长文字</code><br>~~~单行长文字单行长文字单行长文字单行长文字单行长文字单行长文字单行长文字</p>
+<p>8.<strong>添加脚注</strong><br>脚注这个比较少见，而且标准不一样<br><code>A[^a]:</code><br><code>[^a]:A2</code><br>A<a href="abc">^a</a>:</p>
+<p>9.<strong>表格</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">| ABCD | EFGH | IJKL |</div><div class="line">| -----|:----:| ----:|</div><div class="line">| a    | b    | c    |</div><div class="line">| d    | e    |  f   |</div><div class="line">| g    | h    |   i  |</div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>ABCD</th>
+<th style="text-align:center">EFGH</th>
+<th style="text-align:right">IJKL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td style="text-align:center">b</td>
+<td style="text-align:right">c</td>
+</tr>
+<tr>
+<td>d</td>
+<td style="text-align:center">e</td>
+<td style="text-align:right">f</td>
+</tr>
+<tr>
+<td>g</td>
+<td style="text-align:center">h</td>
+<td style="text-align:right">i</td>
+</tr>
+</tbody>
+</table>
+<p>10.列表嵌套<br>列表里的元素前面加4个空格<br>11.换行和段落<br>如果另起一行，只需在当前行结尾加 2 个空格  只需要2个空格<br>段落之间只需要空出一行<br>12.电脑键位<br>使用 <kbd>Ctrl<kbd>+<kbd>Alt<kbd>+<kbd>Del<kbd> 重启电脑<br>13.视频<br><a href="http://v.youku.com/v_show/id_{XMzI4OTU4MjE2}.html" target="_blank" rel="external">http://v.youku.com/v_show/id_{XMzI4OTU4MjE2}.html</a></kbd></kbd></kbd></kbd></kbd></kbd></p>
 <blockquote>
 <p>参考资料<br><a href="https://en.wikipedia.org/wiki/Markdown#Example" target="_blank" rel="external">https://en.wikipedia.org/wiki/Markdown#Example</a><br><a href="http://sspai.com/25137" target="_blank" rel="external">http://sspai.com/25137</a><br><a href="http://www.jianshu.com/p/4Q3aay" target="_blank" rel="external">http://www.jianshu.com/p/4Q3aay</a><br><a href="https://segmentfault.com/markdown" target="_blank" rel="external">https://segmentfault.com/markdown</a><br><a href="http://www.jianshu.com/p/21d355525bdf" target="_blank" rel="external">http://www.jianshu.com/p/21d355525bdf</a><br><a href="http://www.appinn.com/markdown/#precode" target="_blank" rel="external">http://www.appinn.com/markdown/#precode</a></p>
 </blockquote>
@@ -274,7 +303,7 @@
 
 </div>
 
-    <a data-url="http://niuza.tech/20160818/how-to-markdown/" data-id="cis00sxl40005bwkaz91v9qy4" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://niuza.tech/20160818/how-to-markdown/" data-id="cis01balf00067ckad6f0ad3f" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

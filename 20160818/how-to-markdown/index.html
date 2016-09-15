@@ -163,11 +163,11 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                8
+                9
                 <span>文章</span>
             </div>
             <div class="article-info-block">
-                9
+                10
                 <span>标签</span>
             </div>
         </div>
@@ -273,7 +273,7 @@
 <h3 id="Markdown入门"><a href="#Markdown入门" class="headerlink" title="Markdown入门"></a>Markdown入门</h3><p><a href="https://en.wikipedia.org/wiki/Markdown#Example" target="_blank" rel="external">https://en.wikipedia.org/wiki/Markdown#Example</a></p>
 <h3 id="Markdown用法"><a href="#Markdown用法" class="headerlink" title="Markdown用法"></a>Markdown用法</h3><p>下面列举一些我平时经常遇到的一些问题和一些经常忘记的用法，至于一些基本的语法或者更高级的应用可以去看看参考<br>1.Markdown原文里面缩进在渲染后都没有了，所以用 <code>&amp;#160;</code>或者<code>&amp;nbsp;</code> 表示空格<br>2.Markdown特殊符号的显示<br>Markdown是HTML标记的一部分，所以使用起来会受到HTML的一些限制<br>比如&lt;&gt;可以正常显示，但是类似<code>&lt;abc&gt;</code>的符号就会变成html标签了，想正常显示最好写在两个反引号``或者代码块里面<br>如果你要在正文用，请使用HTML的编码写<br><code>&lt;</code>    <code>&amp;lt;</code><br><code>&lt;=</code>   <code>&amp;le;</code><br><code>&gt;</code>    <code>&amp;gt;</code><br><code>&gt;=</code>   <code>&amp;ge;</code><br>至于其他特殊符号请参考:<a href="http://tool.chinaz.com/Tools/htmlchar.aspx" target="_blank" rel="external">HTML特殊符号对照表 - 站长工具</a><br>其他转义后可以显示的字符：<br><code>\\</code> 反斜杠<br><code>\*</code> 星号<br><code>\_</code>下划线<br><code>\{\}</code> 大括号<br><code>\[\]</code> 中括号<br><code>\(\)</code> 小括号<br><code>\#</code> 井号<br><code>\+</code>加号<br><code>\-</code> 减号<br><code>\.</code> 英文句号<br><code>\!</code> 感叹号<br><code>\</code> ` 反引号</p>
 <p>3.<strong>上标和下标</strong><br>上标   2<sup>16</sup> <code>2&lt;sup&gt;16&lt;/sup&gt;</code><br>下标   2<sub>16</sub> <code>2&lt;sub&gt;16&lt;/sub&gt;</code></p>
-<p>4.<strong>超链接</strong><br>超链接 <code>[百度]( http://www.baidu.com)</code><br>图片 <code>![icon]( http://mouapp.com/mou_128.png)</code><br>邮箱 <code>&lt;test@domain.com&gt;</code> <a href="&#109;&#97;&#105;&#x6c;&#116;&#111;&#58;&#116;&#x65;&#x73;&#116;&#64;&#x64;&#x6f;&#x6d;&#x61;&#105;&#x6e;&#x2e;&#99;&#x6f;&#x6d;">&#116;&#x65;&#x73;&#116;&#64;&#x64;&#x6f;&#x6d;&#x61;&#105;&#x6e;&#x2e;&#99;&#x6f;&#x6d;</a><br>5.<strong>多级列表</strong><br>主要是三种不同标号和换行的灵活使用，不同层次之间要有缩进，标号类型顺序可以变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* 一级</div><div class="line">    - 二级</div><div class="line">        + 三级</div></pre></td></tr></table></figure></p>
+<p>4.<strong>超链接</strong><br>超链接 <code>[百度]( http://www.baidu.com)</code><br>图片 <code>![icon]( http://mouapp.com/mou_128.png)</code><br>邮箱 <code>&lt;test@domain.com&gt;</code> <a href="&#109;&#x61;&#105;&#x6c;&#x74;&#111;&#58;&#116;&#x65;&#115;&#116;&#64;&#100;&#x6f;&#x6d;&#97;&#105;&#x6e;&#x2e;&#99;&#111;&#109;">&#116;&#x65;&#115;&#116;&#64;&#100;&#x6f;&#x6d;&#97;&#105;&#x6e;&#x2e;&#99;&#111;&#109;</a><br>5.<strong>多级列表</strong><br>主要是三种不同标号和换行的灵活使用，不同层次之间要有缩进，标号类型顺序可以变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* 一级</div><div class="line">    - 二级</div><div class="line">        + 三级</div></pre></td></tr></table></figure></p>
 <p>6.<strong>横线</strong><br><code>---</code><br>7.<strong>文本</strong><br><code>*斜体文本*</code>   <em>斜体文本</em><br><code>**粗体文本**</code>   <strong>粗体文本</strong><br><code>***粗斜体文本***</code>    <strong><em>粗斜体文本</em></strong><br><code>&lt;small&gt;小文字&lt;/small&gt;</code> <small>小文字</small><br><code>~~删除文字~~</code> <del>删除文字</del><br><code>~~删除文字~~</code> <del>删除文字</del><br>长文字需要在段落前面加4个空格后面再跟3个波浪号</p>
 <pre><code>长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字~~~
 </code></pre><p>8.<strong>列表嵌套</strong><br>列表里的元素前面加4个空格，比如</p>
@@ -323,7 +323,7 @@
 
 </div>
 
-    <a data-url="http://niuza.tech/20160818/how-to-markdown/" data-id="cis04c9u000035oka9si973fs" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://niuza.tech/20160818/how-to-markdown/" data-id="cit3zca7q0007l0kabsshiltg" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -400,6 +400,15 @@
         
 <nav id="article-nav">
     
+        <a href="/20160915/network-command/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    常用网络命令
+                
+            </div>
+        </a>
+    
     
         <a href="/20160812/software-rolan/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">下一篇</strong>
@@ -470,6 +479,25 @@
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
             <ul id="recent-post" class="">
+                
+                    <li>
+                        
+                        <div class="item-thumbnail">
+                            <a href="/20160915/network-command/" class="thumbnail">
+    
+    
+        <span style="background-image:url(http://obc2f9adw.bkt.clouddn.com/static/images/networkcom.jpg)" alt="常用网络命令" class="thumbnail-image"></span>
+    
+</a>
+
+                        </div>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/计算机网络/">计算机网络</a></p>
+                            <p class="item-title"><a href="/20160915/network-command/" class="title">常用网络命令</a></p>
+                            <p class="item-date"><time datetime="2016-09-15T06:43:50.000Z" itemprop="datePublished">2016-09-15</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -547,25 +575,6 @@
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/20160807/joan-comic/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://obc2f9adw.bkt.clouddn.com/static/images/comic-cover.jpg)" alt="脑洞超大超重口味的漫画-Joan Cornellá《欣慰的笑了》系列" class="thumbnail-image"></span>
-    
-</a>
-
-                        </div>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/日记/">日记</a></p>
-                            <p class="item-title"><a href="/20160807/joan-comic/" class="title">脑洞超大超重口味的漫画-Joan Cornellá《欣慰的笑了》系列</a></p>
-                            <p class="item-date"><time datetime="2016-08-07T09:47:05.000Z" itemprop="datePublished">2016-08-07</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -575,7 +584,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">分类</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/作品/">作品</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/扯蛋/">扯蛋</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/作品/">作品</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/扯蛋/">扯蛋</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/日记/">日记</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算机网络/">计算机网络</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/软件/">软件</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -584,7 +593,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">归档</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">九月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a><span class="archive-list-count">8</span></li></ul>
         </div>
     </div>
 
@@ -593,7 +602,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/体育/">体育</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扯蛋/">扯蛋</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桌面工具/">桌面工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/漫画/">漫画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贴吧/">贴吧</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Blog/">Blog</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/体育/">体育</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扯蛋/">扯蛋</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/桌面工具/">桌面工具</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/漫画/">漫画</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网络配置/">网络配置</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/视频/">视频</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/贴吧/">贴吧</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -602,7 +611,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">标签云</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/体育/" style="font-size: 10px;">体育</a> <a href="/tags/扯蛋/" style="font-size: 20px;">扯蛋</a> <a href="/tags/桌面工具/" style="font-size: 10px;">桌面工具</a> <a href="/tags/漫画/" style="font-size: 10px;">漫画</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a> <a href="/tags/贴吧/" style="font-size: 10px;">贴吧</a>
+            <a href="/tags/Blog/" style="font-size: 10px;">Blog</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/体育/" style="font-size: 10px;">体育</a> <a href="/tags/扯蛋/" style="font-size: 20px;">扯蛋</a> <a href="/tags/桌面工具/" style="font-size: 10px;">桌面工具</a> <a href="/tags/漫画/" style="font-size: 10px;">漫画</a> <a href="/tags/网络配置/" style="font-size: 10px;">网络配置</a> <a href="/tags/视频/" style="font-size: 10px;">视频</a> <a href="/tags/贴吧/" style="font-size: 10px;">贴吧</a>
         </div>
     </div>
 

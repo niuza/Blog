@@ -5,17 +5,17 @@
     
     <title>常用网络命令 | 牛杂辉的空间</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="这个学期开始有网络实验课了，这里简单写一下常用的网络命令">
+    <meta name="description" content="这个学期开始有网络实验课了，这里简单写一下常用的网络命令，真是非常简洁的总结，只包括我最常用的并且是windows下使用的~(￣0￣)/">
 <meta property="og:type" content="article">
 <meta property="og:title" content="常用网络命令">
 <meta property="og:url" content="http://niuza.tech/20160915/network-command/index.html">
 <meta property="og:site_name" content="牛杂辉的空间">
-<meta property="og:description" content="这个学期开始有网络实验课了，这里简单写一下常用的网络命令">
+<meta property="og:description" content="这个学期开始有网络实验课了，这里简单写一下常用的网络命令，真是非常简洁的总结，只包括我最常用的并且是windows下使用的~(￣0￣)/">
 <meta property="og:image" content="http://obc2f9adw.bkt.clouddn.com/static/images/networkcom.jpg">
-<meta property="og:updated_time" content="2016-09-15T06:53:04.380Z">
+<meta property="og:updated_time" content="2016-09-15T07:03:37.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用网络命令">
-<meta name="twitter:description" content="这个学期开始有网络实验课了，这里简单写一下常用的网络命令">
+<meta name="twitter:description" content="这个学期开始有网络实验课了，这里简单写一下常用的网络命令，真是非常简洁的总结，只包括我最常用的并且是windows下使用的~(￣0￣)/">
 <meta name="twitter:image" content="http://obc2f9adw.bkt.clouddn.com/static/images/networkcom.jpg">
     
 
@@ -249,7 +249,7 @@
         <a class="tag-link" href="/tags/网络配置/">网络配置</a>
     </div>
 
-                        <i class="fa fa-file-word-o"></i>&nbsp;<span class="post-count">418</span>字
+                        <i class="fa fa-file-word-o"></i>&nbsp;<span class="post-count">477</span>字
 
                     </div>
                 
@@ -258,11 +258,11 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <img title="封面" alt="有空再完善一下我的博客" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/networkcom.jpg?imageView2/2/w/600">
-<p>这个学期开始有网络实验课了，这里简单写一下常用的网络命令</p>
+            <p>这个学期开始有网络实验课了，这里简单写一下常用的网络命令，真是非常简洁的总结，只包括我最常用的并且是windows下使用的~(￣0￣)/</p>
 <a id="more"></a>
-<p>1, <strong>ipconfig</strong> <code>显示当前所有的TCP/IP配置值、刷新动态主机配置协议（DHCP）和域名系统（DNS）设置</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ipconfig /all</div><div class="line">ipconfig/renew //DHCP刷新ip</div></pre></td></tr></table></figure></p>
-<p>2.<strong>ping</strong> <code>发送检测数据包,目标主机最好关防火墙</code><br>3.<strong>Tracert</strong> <code>路由路径</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Tracert -d www.baidu.com //不解析ip</div></pre></td></tr></table></figure></p>
+<p>1, <strong>ipconfig</strong> <code>显示当前所有的TCP/IP配置值、刷新动态主机配置协议（DHCP）和域名系统（DNS）设置</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ipconfig /all //查看MAC地址</div><div class="line">ipconfig/renew //DHCP刷新ip</div></pre></td></tr></table></figure></p>
+<p>2.<strong>ping</strong> <code>发送检测数据包,目标主机最好关防火墙</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 192.168.1.1 //比如ping一下网关</div></pre></td></tr></table></figure></p>
+<p>3.<strong>Tracert</strong> <code>路由路径</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Tracert www.baidu.com </div><div class="line">Tracert -d www.baidu.com //不解析ip，加速trace</div></pre></td></tr></table></figure></p>
 <p>4.<strong>arp</strong> <code>查看arp高速缓存 //局域网ip对应的网卡地址</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//当前缓存没有该计算机，使用该计算机ping一下就可以了</div><div class="line">arp -a //全部</div><div class="line">arp -s //静态化一个项目</div></pre></td></tr></table></figure></p>
 <p>5.<strong>netstat</strong> <code>本机各个端口的网络连接</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -e //以太网的统计数据</div><div class="line">netstat -s //所有协议的统计数据</div></pre></td></tr></table></figure></p>
 
@@ -275,7 +275,7 @@
 
 </div>
 
-    <a data-url="http://niuza.tech/20160915/network-command/" data-id="cit3zgvkx000ft0kat57tkn5z" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://niuza.tech/20160915/network-command/" data-id="cit3zpu3z000dnckah9jn06ff" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding

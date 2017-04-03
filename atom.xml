@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>牛杂辉的空间</title>
+  <subtitle>牛杂辉的空间</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://niuza.tech/"/>
+  <updated>2016-09-25T14:40:08.403Z</updated>
+  <id>http://niuza.tech/</id>
+  
+  <author>
+    <name>牛杂辉</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式入门总结</title>
+    <link href="http://niuza.tech/20160925/how-to-regex/"/>
+    <id>http://niuza.tech/20160925/how-to-regex/</id>
+    <published>2016-09-25T14:06:07.000Z</published>
+    <updated>2016-09-25T14:40:08.403Z</updated>
+    
+    <content type="html"><![CDATA[<img title="正则表达式" alt="正则表达式" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/regex2.png?imageView2/2/w/600">
+<h2 id="正则表达式-Regular-Expression"><a href="#正则表达式-Regular-Expression" class="headerlink" title="正则表达式 Regular Expression"></a>正则表达式 Regular Expression</h2><p>正则表达式描述了一种字符串匹配的模式，可以用来检查一个串是否含有某种子串、将匹配的子串做替换或者从某个串中取出符合某个条件的子串等<br>经常用于查找文本和替换文本，所以下面列举一些常用的文字模式和讲解如何在Java中应用<br><a id="more"></a></p>
+<h3 id="规则"><a href="#规则" class="headerlink" title="规则"></a>规则</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">1.元字符：特殊匹配字符，区分大小写</div><div class="line">. 表示除\n之外的任意单个字符包括自身. (但是RegexTester会匹配换行)</div><div class="line">\ 转义字符，\.表示只匹配 . 这个字符，同理\\匹配 \ 这个字符</div><div class="line"></div><div class="line">2.字符组：[ ]</div><div class="line">[abc]:匹配组内的一个字符</div><div class="line">[1-3]:1-3之内所有字符之一(按ASCII码值)</div><div class="line">[a\-b]:方框内匹配 - 这个字符，还有 a b</div><div class="line">[^1-3]: ^ 表示反义字符,1-3以外的字符   </div><div class="line"></div><div class="line">3.空字符：\n</div><div class="line">\r 匹配回车,return </div><div class="line">\n 换行 (RegexTester会匹配换行回车效果 \n)</div><div class="line">\t Tab</div><div class="line">\f 换页</div><div class="line"></div><div class="line">4.字符集： \w \d \s</div><div class="line">\d 单个数字 \D 单个非数字</div><div class="line">\w 文件名字符集[0-9a-zA-Z_]  \W 非字符集 (word)</div><div class="line">[\w\.]或者[\w.] 包含.的字符集，因为.在方框里也是普通字符所以可以省略\</div><div class="line">\s 单个空字符 [\f\n\r\t\v]  (space)</div><div class="line"></div><div class="line">5.多字符：+*? &#123;&#125;</div><div class="line">+表示匹配1-无穷 相当于&#123;1,&#125;</div><div class="line">*表示匹配0-无穷,也就是说可以不匹配字符 相当于&#123;0,&#125;</div><div class="line">? 表示匹配 0-1个字符 相当于&#123;0,1&#125;</div><div class="line">\d&#123;3&#125;表示匹配多个字符</div><div class="line">\d&#123;1,3&#125;表示匹配区间次数的字符 </div><div class="line"></div><div class="line">6.匹配边界：\b</div><div class="line">\b 匹配单词首位末位 (border) </div><div class="line">\B 不在单词边界</div><div class="line">对于普通字符 空格，回车，逗号，破折号，句号都算边界(所以下划线_不算边界，叫连字符)</div><div class="line">对于边界符，普通字符算边界</div><div class="line">^ 文本首位，^\s*city 这样就匹配文本开头的空格</div><div class="line">$ 文本末尾， city^s*$ 这样就匹配文本末尾的空格</div><div class="line"></div><div class="line">7.贪婪模式和懒惰模式 </div><div class="line">贪婪：匹配时候整个字符串收缩，部分匹配再扩展，</div><div class="line">找到匹配继续扩展直到无法扩展，再将最后一个匹配的加入集合</div><div class="line">懒惰：第一个字符开始，找到部分匹配扩展</div><div class="line">直到找到匹配，加入集合,然后从剩下的字符重新开始</div><div class="line">？ + *  &#123;n,m&#125; 后边多一个？表示懒惰模式</div><div class="line">例如：&#123;n&#125;和&#123;n&#125;?结果一致</div><div class="line">例如：??一旦匹配0个条件后面的就重新匹配模式，而？贪婪模式尽量匹配1个条件</div><div class="line">比如 flowers?? 就会匹配到flower就重新匹配了，flowers?会匹配flowers</div><div class="line">比如 如果用正则匹配src中内容非懒惰模式匹配 src=&quot;.*&quot;</div><div class="line">匹配结果是：src=&quot;test.jpg&quot; width=&quot;60px&quot; height=&quot;80px&quot;</div><div class="line">意思是从=&quot;往后匹配，直到最后一个&quot;匹配结束</div><div class="line">懒惰模式正则：</div><div class="line">src=&quot;.*?&quot;</div><div class="line">结果：src=&quot;test.jpg&quot;</div><div class="line">因为匹配到第一个&quot;就结束了一次匹配。不会继续向后匹配</div><div class="line">比如 abc1234def</div><div class="line">\d&#123;1,3&#125; 会匹配 1234，就是123和4</div><div class="line">\d&#123;1,3&#125;? 会匹配1234，就是1,2,3,4</div><div class="line"></div><div class="line">8.子模式：()</div><div class="line">() 括号里面表示整体    (&lt;br/?&gt;)&#123;2,&#125;   (19|20)\d&#123;2&#125;</div><div class="line"> | 或者 ，符号两边都是一个整体 &lt;/?i&gt; | &lt;/?b&gt;</div><div class="line"></div><div class="line">9.向前引用与替换：\1 $1</div><div class="line">\1 表示前面第一个子模式，例：(of) \1相当于of of，同理&lt;h([1-6])&gt;.*?&lt;/h\1&gt; </div><div class="line">$1 引用，用来替换匹配到的字符串</div><div class="line"></div><div class="line">10.命名子模式：</div><div class="line">子模式：(?&lt;name&gt;abc) </div><div class="line">引用：\k&lt;name&gt; </div><div class="line">替换：$&#123;name&#125;</div><div class="line"></div><div class="line">11.预查：?: ?=</div><div class="line">(?: abc) 非获取匹配，不保存子模式，无法向后引用 $1变成普通字符</div><div class="line">abc(?=abc) 正向预查，匹配子模式前面的表达式，但子模式不参与匹配 ，相当于 abc\b</div><div class="line">(?&lt;=abc)abc 反向预查，匹配子模式后面的表达式，但子模式不参与匹配，相当于 \b abc</div><div class="line">abc(?!abc) 负正向预查，匹配子模式前面的表达式，但不匹配子模式，相当于abc \B</div><div class="line">(?&lt;!abc)abc  负反向预查，匹配子模式后面的表达式，但子模式不参与匹配 相当于\B abc</div></pre></td></tr></table></figure>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>1.提取网址<br>只匹配Http和Https协议的合法完整地址，至少一个分隔符<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http(s)?://([\w]+\.)+\w+(/\w+)*</div></pre></td></tr></table></figure></p>
+<p>2.电子邮箱地址<br>@前后都有可能有多个点，邮箱地址一般开头不匹配.还有_字符，还有就是不是匹配合法的部分，而是完全不匹配非法的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">\w+[\w.]*@[\w.]+\.\w+    </div><div class="line">\w+([-.]\w+)*@\w+([-.]\w+)*</div></pre></td></tr></table></figure></p>
+<p>3.日期<br>每个月的天数有28-31天，个位数的天数还必须是单词边界，暂时不考虑闰年<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">2月份：2-([1-9]\b | 1\d | 2[0-8])</div><div class="line">31日 ：([13578] | 1[02]) - ([1-9]\b | [12]\d | 3[01]) </div><div class="line">30日：(469|11)-([1-9]\b | [12]\d | 30)</div></pre></td></tr></table></figure></p>
+<h3 id="Java用法"><a href="#Java用法" class="headerlink" title="Java用法"></a>Java用法</h3><p>包：java.util.regex<br>类：<strong>Pattern</strong>(正则表达式编译后的模式)<br>    <strong>Matcher</strong>(进行匹配操作的类,由Pattern创建)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">//创建Pattern和Matcher</div><div class="line">Pattern pattern=Pattern.compile(&quot;^Java.*$&quot;);</div><div class="line">Matcher matcher=pattern.matcher(&quot;Java My ass&quot;);</div><div class="line"></div><div class="line">//验证: matches();</div><div class="line">boolean b=matcher.matches();</div><div class="line"></div><div class="line">//获取匹配:group()</div><div class="line">if(matcher.find()) matcher.group(); //返回匹配的字符串</div><div class="line">if(matcher.find()) matcher.group(1);//返回匹配的子模式字符串</div><div class="line"></div><div class="line">//分割: split()</div><div class="line">String[] strs=pattern.split(&quot;Java | Sun,Oracle&quot;);</div><div class="line"></div><div class="line">//查找下一个匹配:find()</div><div class="line">matcher.find();</div><div class="line"></div><div class="line">//字符置换: appendReplacement()</div><div class="line">StringBuilder sbr=new StringBuilder();</div><div class="line">while(matcher.find())</div><div class="line">&#123;</div><div class="line">    matcher.appendReplacement(sbr,&quot;Java&quot;); </div><div class="line">   //首先必须有find()找到的匹配位置，这个函数只负责append，</div><div class="line">   //从上次匹配到的末尾+1的位置开始append,直到遇到匹配的字符</div><div class="line">   //append替换的字符，然后记录匹配到的字符串的末尾的位置，没了</div><div class="line">&#125;</div><div class="line">matcher.appendTail(sbr); //最后还append最后匹配字符串后面剩下的尾巴</div><div class="line"></div><div class="line">//字符置换函数:replaceAll() 就是appendReplacement()的实现</div><div class="line">matcher.replaceFirst(&quot;Java&quot;); //替换第一个匹配的字符串</div><div class="line">matcher.replaceAll(&quot;Java&quot;); //替换所有匹配</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;img title=&quot;正则表达式&quot; alt=&quot;正则表达式&quot; class=&quot;class1 class2&quot; src=&quot;http://obc2f9adw.bkt.clouddn.com/static/images/regex2.png?imageView2/2/w/600&quot;&gt;
+&lt;h2 id=&quot;正则表达式-Regular-Expression&quot;&gt;&lt;a href=&quot;#正则表达式-Regular-Expression&quot; class=&quot;headerlink&quot; title=&quot;正则表达式 Regular Expression&quot;&gt;&lt;/a&gt;正则表达式 Regular Expression&lt;/h2&gt;&lt;p&gt;正则表达式描述了一种字符串匹配的模式，可以用来检查一个串是否含有某种子串、将匹配的子串做替换或者从某个串中取出符合某个条件的子串等&lt;br&gt;经常用于查找文本和替换文本，所以下面列举一些常用的文字模式和讲解如何在Java中应用&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程" scheme="http://niuza.tech/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="正则表达式" scheme="http://niuza.tech/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常用网络命令</title>
+    <link href="http://niuza.tech/20160915/network-command/"/>
+    <id>http://niuza.tech/20160915/network-command/</id>
+    <published>2016-09-15T06:43:50.000Z</published>
+    <updated>2016-09-15T07:03:37.531Z</updated>
+    
+    <content type="html"><![CDATA[<p>这个学期开始有网络实验课了，这里简单写一下常用的网络命令，真是非常简洁的总结，只包括我最常用的并且是windows下使用的~(￣0￣)/</p>
+<a id="more"></a>
+<p>1, <strong>ipconfig</strong> <code>显示当前所有的TCP/IP配置值、刷新动态主机配置协议（DHCP）和域名系统（DNS）设置</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ipconfig /all //查看MAC地址</div><div class="line">ipconfig/renew //DHCP刷新ip</div></pre></td></tr></table></figure></p>
+<p>2.<strong>ping</strong> <code>发送检测数据包,目标主机最好关防火墙</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ping 192.168.1.1 //比如ping一下网关</div></pre></td></tr></table></figure></p>
+<p>3.<strong>Tracert</strong> <code>路由路径</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Tracert www.baidu.com </div><div class="line">Tracert -d www.baidu.com //不解析ip，加速trace</div></pre></td></tr></table></figure></p>
+<p>4.<strong>arp</strong> <code>查看arp高速缓存 //局域网ip对应的网卡地址</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//当前缓存没有该计算机，使用该计算机ping一下就可以了</div><div class="line">arp -a //全部</div><div class="line">arp -s //静态化一个项目</div></pre></td></tr></table></figure></p>
+<p>5.<strong>netstat</strong> <code>本机各个端口的网络连接</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">netstat -e //以太网的统计数据</div><div class="line">netstat -s //所有协议的统计数据</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这个学期开始有网络实验课了，这里简单写一下常用的网络命令，真是非常简洁的总结，只包括我最常用的并且是windows下使用的~(￣0￣)/&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="计算机网络" scheme="http://niuza.tech/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+    
+      <category term="网络配置" scheme="http://niuza.tech/tags/%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>认识Markdown</title>
+    <link href="http://niuza.tech/20160818/how-to-markdown/"/>
+    <id>http://niuza.tech/20160818/how-to-markdown/</id>
+    <published>2016-08-18T06:58:27.000Z</published>
+    <updated>2016-08-18T09:22:06.320Z</updated>
+    
+    <content type="html"><![CDATA[<img title="md" alt="markdown" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/markdown.png?imageView2/2/w/600">
+<h3 id="Markdown是什么？"><a href="#Markdown是什么？" class="headerlink" title="Markdown是什么？"></a>Markdown是什么？</h3><p><code>Markdown is a text-to-HTML conversion tool for web writers.</code><br>Markdown 是一种轻量级的标记语言，目前我写这篇文章的时候也是在使用Markdown，使得我很简单地就完成了文章的一些排版还有文字标记，使得文章显得直观美观可读性高</p>
+<h3 id="使用-Markdown-的优点"><a href="#使用-Markdown-的优点" class="headerlink" title="使用 Markdown 的优点"></a>使用 Markdown 的优点</h3><ul>
+<li>专注你的文字内容而不是排版样式。</li>
+<li>轻松的导出 HTML、PDF 和本身的 .md 文件。</li>
+<li>纯文本内容，兼容所有的文本编辑器与字处理软件。</li>
+<li>可读，直观。适合所有人的写作语言<a id="more"></a>
+</li>
+</ul>
+<h3 id="Markdown入门"><a href="#Markdown入门" class="headerlink" title="Markdown入门"></a>Markdown入门</h3><p><a href="https://en.wikipedia.org/wiki/Markdown#Example" target="_blank" rel="external">https://en.wikipedia.org/wiki/Markdown#Example</a></p>
+<h3 id="Markdown用法"><a href="#Markdown用法" class="headerlink" title="Markdown用法"></a>Markdown用法</h3><p>下面列举一些我平时经常遇到的一些问题和一些经常忘记的用法，至于一些基本的语法或者更高级的应用可以去看看参考<br>1.Markdown原文里面缩进在渲染后都没有了，所以用 <code>&amp;#160;</code>或者<code>&amp;nbsp;</code> 表示空格<br>2.Markdown特殊符号的显示<br>Markdown是HTML标记的一部分，所以使用起来会受到HTML的一些限制<br>比如&lt;&gt;可以正常显示，但是类似<code>&lt;abc&gt;</code>的符号就会变成html标签了，想正常显示最好写在两个反引号``或者代码块里面<br>如果你要在正文用，请使用HTML的编码写<br><code>&lt;</code>    <code>&amp;lt;</code><br><code>&lt;=</code>   <code>&amp;le;</code><br><code>&gt;</code>    <code>&amp;gt;</code><br><code>&gt;=</code>   <code>&amp;ge;</code><br>至于其他特殊符号请参考:<a href="http://tool.chinaz.com/Tools/htmlchar.aspx" target="_blank" rel="external">HTML特殊符号对照表 - 站长工具</a><br>其他转义后可以显示的字符：<br><code>\\</code> 反斜杠<br><code>\*</code> 星号<br><code>\_</code>下划线<br><code>\{\}</code> 大括号<br><code>\[\]</code> 中括号<br><code>\(\)</code> 小括号<br><code>\#</code> 井号<br><code>\+</code>加号<br><code>\-</code> 减号<br><code>\.</code> 英文句号<br><code>\!</code> 感叹号<br><code>\</code> ` 反引号</p>
+<p>3.<strong>上标和下标</strong><br>上标   2<sup>16</sup> <code>2&lt;sup&gt;16&lt;/sup&gt;</code><br>下标   2<sub>16</sub> <code>2&lt;sub&gt;16&lt;/sub&gt;</code></p>
+<p>4.<strong>超链接</strong><br>超链接 <code>[百度]( http://www.baidu.com)</code><br>图片 <code>![icon]( http://mouapp.com/mou_128.png)</code><br>邮箱 <code>&lt;test@domain.com&gt;</code> <a href="&#109;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#x74;&#101;&#115;&#x74;&#64;&#100;&#x6f;&#x6d;&#97;&#105;&#110;&#x2e;&#x63;&#x6f;&#x6d;">&#x74;&#101;&#115;&#x74;&#64;&#100;&#x6f;&#x6d;&#97;&#105;&#110;&#x2e;&#x63;&#x6f;&#x6d;</a><br>5.<strong>多级列表</strong><br>主要是三种不同标号和换行的灵活使用，不同层次之间要有缩进，标号类型顺序可以变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">* 一级</div><div class="line">    - 二级</div><div class="line">        + 三级</div></pre></td></tr></table></figure></p>
+<p>6.<strong>横线</strong><br><code>---</code><br>7.<strong>文本</strong><br><code>*斜体文本*</code>   <em>斜体文本</em><br><code>**粗体文本**</code>   <strong>粗体文本</strong><br><code>***粗斜体文本***</code>    <strong><em>粗斜体文本</em></strong><br><code>&lt;small&gt;小文字&lt;/small&gt;</code> <small>小文字</small><br><code>~~删除文字~~</code> <del>删除文字</del><br><code>~~删除文字~~</code> <del>删除文字</del><br>长文字需要在段落前面加4个空格后面再跟3个波浪号</p>
+<pre><code>长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字长文字~~~
+</code></pre><p>8.<strong>列表嵌套</strong><br>列表里的元素前面加4个空格，比如</p>
+<ul>
+<li>列表<blockquote>
+<p>列表内引用</p>
+</blockquote>
+</li>
+</ul>
+<p>9.<strong>表格</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">| ABCD | EFGH | IJKL |</div><div class="line">| -----| ----:|:----:|</div><div class="line">| a    | b    | c    |</div><div class="line">| d    | e    |  f   |</div><div class="line">| g    | h    |   i  |</div></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>ABCD</th>
+<th style="text-align:right">EFGH</th>
+<th style="text-align:center">IJKL</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td style="text-align:right">b</td>
+<td style="text-align:center">c</td>
+</tr>
+<tr>
+<td>d</td>
+<td style="text-align:right">e</td>
+<td style="text-align:center">f</td>
+</tr>
+<tr>
+<td>g</td>
+<td style="text-align:right">h</td>
+<td style="text-align:center">i</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>参考资料<br><a href="https://en.wikipedia.org/wiki/Markdown#Example" target="_blank" rel="external">https://en.wikipedia.org/wiki/Markdown#Example</a><br><a href="http://sspai.com/25137" target="_blank" rel="external">http://sspai.com/25137</a><br><a href="http://www.jianshu.com/p/4Q3aay" target="_blank" rel="external">http://www.jianshu.com/p/4Q3aay</a><br><a href="https://segmentfault.com/markdown" target="_blank" rel="external">https://segmentfault.com/markdown</a><br><a href="http://www.jianshu.com/p/21d355525bdf" target="_blank" rel="external">http://www.jianshu.com/p/21d355525bdf</a><br><a href="http://www.appinn.com/markdown/#precode" target="_blank" rel="external">http://www.appinn.com/markdown/#precode</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;img title=&quot;md&quot; alt=&quot;markdown&quot; class=&quot;class1 class2&quot; src=&quot;http://obc2f9adw.bkt.clouddn.com/static/images/markdown.png?imageView2/2/w/600&quot;&gt;
+&lt;h3 id=&quot;Markdown是什么？&quot;&gt;&lt;a href=&quot;#Markdown是什么？&quot; class=&quot;headerlink&quot; title=&quot;Markdown是什么？&quot;&gt;&lt;/a&gt;Markdown是什么？&lt;/h3&gt;&lt;p&gt;&lt;code&gt;Markdown is a text-to-HTML conversion tool for web writers.&lt;/code&gt;&lt;br&gt;Markdown 是一种轻量级的标记语言，目前我写这篇文章的时候也是在使用Markdown，使得我很简单地就完成了文章的一些排版还有文字标记，使得文章显得直观美观可读性高&lt;/p&gt;
+&lt;h3 id=&quot;使用-Markdown-的优点&quot;&gt;&lt;a href=&quot;#使用-Markdown-的优点&quot; class=&quot;headerlink&quot; title=&quot;使用 Markdown 的优点&quot;&gt;&lt;/a&gt;使用 Markdown 的优点&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;专注你的文字内容而不是排版样式。&lt;/li&gt;
+&lt;li&gt;轻松的导出 HTML、PDF 和本身的 .md 文件。&lt;/li&gt;
+&lt;li&gt;纯文本内容，兼容所有的文本编辑器与字处理软件。&lt;/li&gt;
+&lt;li&gt;可读，直观。适合所有人的写作语言
+    
+    </summary>
+    
+      <category term="编程" scheme="http://niuza.tech/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Markdown" scheme="http://niuza.tech/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安利一款轻量级启动器-Rolan</title>
+    <link href="http://niuza.tech/20160812/software-rolan/"/>
+    <id>http://niuza.tech/20160812/software-rolan/</id>
+    <published>2016-08-12T05:21:35.000Z</published>
+    <updated>2016-08-12T06:08:30.199Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>Rolan</strong>是一个轻量级启动器<br><a href="http://www.irolan.com/" target="_blank" rel="external">Rolan 官方网站</a><br><img title="Rolan" alt="Rolan" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/Rolan.jpg?imageView2/2/w/600"><br><a id="more"></a></p>
+<h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><ul>
+<li>小巧：绿色应用仅100多KB，没有多余繁杂的功能，资源占用很小，响应速度极快</li>
+<li>强大：对纯键盘操作的支持，支持配置导出导入等等<img title="Rolan功能" alt="Rolan功能" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/Rolan功能.jpg?imageView2/2/w/600"></li>
+<li>个性化：支持皮肤和界面元素的定制，根据自己的使用习惯自由组合</li>
+<li>高效：界面简洁，一键启动应用<img title="简洁" alt="开始页面" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/简洁.jpg?imageView2/2/w/600">
+</li>
+</ul>
+<h3 id="快速启动："><a href="#快速启动：" class="headerlink" title="快速启动："></a>快速启动：</h3><p>1.设置分组，将文件或者快捷方式拖到软件窗口中<br>2.通过像QQ样的桌面吸附/键盘热键/任务栏右下角随时呼出<br>3.点击图标即可启动<br><img title="呼出" alt="呼出Rolan" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/呼出.gif"></p>
+<h3 id="搜索："><a href="#搜索：" class="headerlink" title="搜索："></a>搜索：</h3><p>呼出界面后可以直接输入关键字进行搜索，会匹配拼音首写字母，回车默认运行搜索结果第一行内容<br><img title="搜索" alt="搜索" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/搜索.jpg?imageView2/2/w/600"></p>
+<h3 id="备忘："><a href="#备忘：" class="headerlink" title="备忘："></a>备忘：</h3><p>还带有一个快捷简单的备忘录 Alt+E，用来记录一个备忘。<br><img title="备忘" alt="备忘录" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/备忘.jpg?imageView2/2/w/600"></p>
+<h3 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h3><p>导入导出配置，皮肤设置，界面设置，命令行模式等等</p>
+<h3 id="所以，哪里才能下载得到呢"><a href="#所以，哪里才能下载得到呢" class="headerlink" title="所以，哪里才能下载得到呢"></a>所以，哪里才能下载得到呢</h3><p><a href="http://www.irolan.com/" target="_blank" rel="external">Rolan 官方网站</a></p>
+<p>类似的软件还有：Fences、音速启动等等，而我更青睐这款简洁朴素又不乏强大功能的Rolan </p>
+<blockquote>
+<p>附：<br>截图使用的 <a href="http://www.cr173.com/soft/12898.html" target="_blank" rel="external">FSCapture</a><br>Gif录制使用的 <a href="http://www.crsky.com/soft/24642.html" target="_blank" rel="external">灵者Gif录制</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;strong&gt;Rolan&lt;/strong&gt;是一个轻量级启动器&lt;br&gt;&lt;a href=&quot;http://www.irolan.com/&quot;&gt;Rolan 官方网站&lt;/a&gt;&lt;br&gt;&lt;img title=&quot;Rolan&quot; alt=&quot;Rolan&quot; class=&quot;class1 class2&quot; src=&quot;http://obc2f9adw.bkt.clouddn.com/static/images/Rolan.jpg?imageView2/2/w/600&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="软件" scheme="http://niuza.tech/categories/%E8%BD%AF%E4%BB%B6/"/>
+    
+    
+      <category term="桌面工具" scheme="http://niuza.tech/tags/%E6%A1%8C%E9%9D%A2%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>奥运会上哪看直播呢？</title>
+    <link href="http://niuza.tech/20160809/direct-broadcast/"/>
+    <id>http://niuza.tech/20160809/direct-broadcast/</id>
+    <published>2016-08-09T04:07:43.000Z</published>
+    <updated>2016-08-09T05:09:23.133Z</updated>
+    
+    <content type="html"><![CDATA[<img title="sport" alt="里约奥运会吉祥物" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/sports1.jpg?imageView2/2/w/600">
+<p>奥运会来了上哪看直播呢？现在推荐几个我平时看NBA直播的网站，当然现在都支持奥运会直播<br>先放几个奥运专题：<br><a href="http://2016.cctv.com/schedule/gold/index.shtml" target="_blank" rel="external">金牌产生时刻<em>体育</em>央视网(cctv.com)</a><br><a href="http://live.qq.com/cms/zt/olympic" target="_blank" rel="external">企鹅直播-奥运专题页</a><br><a id="more"></a><br>最好的体验当然是门户网站了</p>
+<p><a href="http://2016.cctv.com/" target="_blank" rel="external">央视网<em>体育</em>央视网(cctv.com)</a><br><a href="http://2016.lesports.com/" target="_blank" rel="external">乐视体育</a><br><a href="http://sports.qq.com/" target="_blank" rel="external">腾讯体育_腾讯网</a></p>
+<p>至于门户网站没有的赛事或者需要充钱之类的，就需要一些直播网站了：</p>
+<p><a href="http://www.zhibo8.cc/" target="_blank" rel="external">直播吧-NBA直播|NBA直播吧|足球直播|英超直播|CCTV5在线直播|CBA直播|体育直播</a> – 这个挺多人都知道的吧<br><a href="http://jrszhibo.com/" target="_blank" rel="external">jrs直播</a> – 良心网站，界面简洁，视频高清<br><a href="http://www.dasai8.com/" target="_blank" rel="external">大赛吧-足球直播|NBA直播|英超直播|NBA录像|直播吧</a> – 跟直播吧差不多的网站，直播项目列表还是挺详细的<br><a href="http://www.jisutiyu.com/" target="_blank" rel="external">体育吧<em>极速体育</em>足球直播_英超直播</a> – 极速体育主页的推荐频道还有推荐节目不错，虽然主页列表比较乱<br><a href="http://www.azhibo.com/" target="_blank" rel="external">A直播 - 基本比直播吧更好的NBA直播,足球直播,CBA直播,CCTV5在线直播</a> — 界面做得不错<br><a href="http://www.yczbb.com/" target="_blank" rel="external">英超直播吧|体育直播吧|NBA直播吧|足球直播吧|英超直播-做最全的体育直播网站!</a> — 节目比较繁杂，不过一些冷门的节目经常看不了，当做备用</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;img title=&quot;sport&quot; alt=&quot;里约奥运会吉祥物&quot; class=&quot;class1 class2&quot; src=&quot;http://obc2f9adw.bkt.clouddn.com/static/images/sports1.jpg?imageView2/2/w/600&quot;&gt;
+&lt;p&gt;奥运会来了上哪看直播呢？现在推荐几个我平时看NBA直播的网站，当然现在都支持奥运会直播&lt;br&gt;先放几个奥运专题：&lt;br&gt;&lt;a href=&quot;http://2016.cctv.com/schedule/gold/index.shtml&quot;&gt;金牌产生时刻&lt;em&gt;体育&lt;/em&gt;央视网(cctv.com)&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;http://live.qq.com/cms/zt/olympic&quot;&gt;企鹅直播-奥运专题页&lt;/a&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="扯蛋" scheme="http://niuza.tech/categories/%E6%89%AF%E8%9B%8B/"/>
+    
+    
+      <category term="体育" scheme="http://niuza.tech/tags/%E4%BD%93%E8%82%B2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>一部黄暴的动画-《腌黄瓜先生》</title>
+    <link href="http://niuza.tech/20160808/mmr-pickles/"/>
+    <id>http://niuza.tech/20160808/mmr-pickles/</id>
+    <published>2016-08-08T14:01:55.000Z</published>
+    <updated>2016-08-21T07:57:45.512Z</updated>
+    
+    <content type="html"><![CDATA[<p>在b站看了第一季，一直开着弹幕看，大家都不约而同的觉得这动画开的脑洞太大，也非常地黄暴。Mr.Pickles虽然杀人如麻，甚至把人类捉起来当自己的后宫…但是观众的大部分的观点是觉得Mr.Pickles是好狗，这让我想起在论坛看过的一句话：好人要经历九九八十一难才能成佛，作恶多端的人是放下屠刀立地成佛。<br>虽然主题是Mr.Pickles以暴制暴，但是里面的剧情节奏都让人大呼过瘾<br><a id="more"></a><br><img title="pickles" alt="喜欢吃腌黄瓜的腌黄瓜先生" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/pickles.jpg?imageView2/2/w/600"><br>引用一下豆瓣 東wind-s 的影评</p>
+<blockquote>
+<p>故事设定在一个古旧偏远的美国小镇，一个平凡的家庭里，一个乖巧的小男孩和他一只忠心，喜爱吃腌黄瓜的狗狗，还一对善解人意的父母，和一个略带神经质的爷爷。究竟一个看似如此平凡的故事，怎样可以演变成一套充满血腥和露点场面，散播各种邪教讯息的卡通呢？<br>其实Mr.Prickles(腌黄瓜先生)是一套由Adult Swim，一间美国网络电视台子公司，在2014年9月21日发布的「卡通」来的。由於卡通隐含(其实都很明刀明枪)了太多撒旦教、光明会和神秘学的讯息，和每集必有的血腥杀人或恶魔祟拜镜头，所以很快就吸引了数以万计的阴谋论者的爱戴和观看。由於反应非常好，Adult Swim正计划制作第二季。<br>Mr.Prickles总共有十集，每集的剧情都是以一些美国都市传说改编或日常事件作为骨干，由普通的父亲节和棒球比赛，到十三号黑色星期五和黑市医院偷取病人器官等传说也有。简单来说，就是小男孩Tommy一家人总会惹上一些古古怪怪的麻烦事，例如第一集Tommy为了追求一个女孩，而不小心隆了一对36D的大奶出来(汗…)。<br>而每次麻烦发生时，Tommy身边那只看似很乖巧的狗狗Mr.Prickles，其实是一只撒旦附身，拥有各种法术和杀人技巧的魔犬，便会暗中为小主人杀去碍事的人来拯救他。另外，那个神经质的爷爷一早知道Mr.Prickles真正身份，但每次他说出真相时，都被人当是老人痴呆症发作而失败。<br>那麼卡通究竟隐藏了什麼撒旦教、光明会和神秘学的讯息呢？其实每集都有数以十计的隐藏讯息，但如果小编一一指出来就失去意义啦。所以小编只会说一两个最明显，例如在每集OP，都有五芒星和其他魔鬼标志出现。而且，每当Mr.Prickles施法时，那些恶魔般的声音其实都是倒转来说的话语，这点模仿了传说有部份摇滚乐曲倒转播放可以得出赞美撒旦的讯息。除此之外，Mr.Prickles的「地下基地」，至少从阴谋论的目光来说，是真有其事(奸笑)。<br>有人说这套卡通是由撒旦教徙制作出来，因为其实撒旦教这几年都有制作儿童教材的习惯，但小编都没有理会太多。因为Mr.Prickles实在太好看了！虽然每次看时都有种「WTF，我究竟在看什麼」的感觉，但每次看完一集都忍不住马上按下一集来看！</p>
+</blockquote>
+<img title="pickles" alt="Good" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/pickles3.jpg?imageView2/2/w/600">
+<p>作为我这种人，可能不会对背后的涵义作太多的理解，毕竟对宗教撒旦那些不了解，并且很多人都有不同的理解。这部片适合有辨别能力的人看，这东西就像撒旦教，死亡金属一样，受不了的人肯定是受不了的。但是确实这部片子也引起了观看过的人的一些讨论，也许是因为Mr.Pickles它的行为是复杂的，也许是因为它把我们一些一时冲动的邪恶念头都做出来了，并且制片人也在试探着观影人的下限。<br>PS:腌黄瓜先生好像是边境牧羊犬</p>
+<p>附：<br><a href="http://http://www.acfun.tv/v/ac1630275" target="_blank" rel="external">腌黄瓜先生第一季 - AcFun弹幕视频网</a><br><a href="http://www.acfun.tv/v/ac2692896" target="_blank" rel="external">腌黄瓜先生第二季 - AcFun弹幕视频网</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在b站看了第一季，一直开着弹幕看，大家都不约而同的觉得这动画开的脑洞太大，也非常地黄暴。Mr.Pickles虽然杀人如麻，甚至把人类捉起来当自己的后宫…但是观众的大部分的观点是觉得Mr.Pickles是好狗，这让我想起在论坛看过的一句话：好人要经历九九八十一难才能成佛，作恶多端的人是放下屠刀立地成佛。&lt;br&gt;虽然主题是Mr.Pickles以暴制暴，但是里面的剧情节奏都让人大呼过瘾&lt;br&gt;
+    
+    </summary>
+    
+      <category term="日记" scheme="http://niuza.tech/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="扯蛋" scheme="http://niuza.tech/tags/%E6%89%AF%E8%9B%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>脑洞超大超重口味的漫画-Joan Cornellá《欣慰的笑了》系列</title>
+    <link href="http://niuza.tech/20160807/joan-comic/"/>
+    <id>http://niuza.tech/20160807/joan-comic/</id>
+    <published>2016-08-07T09:47:05.000Z</published>
+    <updated>2016-08-07T13:15:52.059Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天在知乎看到的一个漫画，Joan Cornellá《欣慰的笑了》系列，我第一次看到的感觉是<br><img title="comic-cover" alt="沃日好几把酷炫" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/comic-cover.jpg?imageView2/2/w/600"><br>不过接下来看了几张 完全超出了我的理解范围，口味是如此重…<br><a id="more"></a></p>
+<p>推荐一个搬运官方的微博 <a href="http://weibo.com/joancomic?refer_flag=1001600001_&amp;is_all=1#_rnd1470564030240" target="_blank" rel="external">JoanCornella漫画的微博</a></p>
+<img title="介绍" alt="转发微博" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/介绍.jpg">
+<ul>
+<li>随便搬运几张<img title="joan1" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan1.jpg">
+<img title="joan2" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan2.jpg">
+<img title="joan3" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan3.jpg">
+<img title="joan4" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan4.jpg">
+<img title="joan5" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan5.jpg">
+<img title="joan6" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan6.jpg">
+<img title="joan7" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan7.jpg">
+<img title="joan8" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan8.jpg">
+<img title="joan9" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan9.jpg">
+<img title="joan10" alt="JoanCornella漫画" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/joan10.jpg">
+</li>
+</ul>
+<ul>
+<li>以下是几枚官方动画<embed type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" quality="high" height="480" flashvars="autoplay=false&play=false" menu="false" hidden="false" loop="false" width="480" src="http://video.weibo.com/player/1034:cdf4ae9017e52c2cca951de4ee22b711/v.swf">
+
+</li>
+</ul>
+<embed type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" quality="high" height="480" flashvars="autoplay=false&play=false" menu="false" hidden="false" loop="false" width="480" src="http://video.weibo.com/player/1034:d3aef1c49d2422af60463b3b7190380d/v.swf">
+
+<embed type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" wmode="transparent" quality="high" height="480" flashvars="autoplay=false&play=false" menu="false" hidden="false" loop="false" width="480" src="http://video.weibo.com/player/1034:84042dbd98ddcd4c195fe15105e9eaf0/v.swf">
+
+<embed type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" quality="high" height="480" width="480" play="false" flashvars="autoplay=false&play=false" menu="false" hidden="false" loop="false" src="http://video.weibo.com/player/1034:840c09122e18db3b251a9358fcf58a01/v.swf">
+
+
+
+<p>送两个头像给你们<br><img title="c1" alt="你们有没有..." class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/head1.jpg?imageView2/2/w/600"><br><img title="c2" alt="有没有那个..." class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/head2.jpg?imageView2/2/w/600"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天在知乎看到的一个漫画，Joan Cornellá《欣慰的笑了》系列，我第一次看到的感觉是&lt;br&gt;&lt;img title=&quot;comic-cover&quot; alt=&quot;沃日好几把酷炫&quot; class=&quot;class1 class2&quot; src=&quot;http://obc2f9adw.bkt.clouddn.com/static/images/comic-cover.jpg?imageView2/2/w/600&quot;&gt;&lt;br&gt;不过接下来看了几张 完全超出了我的理解范围，口味是如此重…&lt;br&gt;
+    
+    </summary>
+    
+      <category term="日记" scheme="http://niuza.tech/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="扯蛋" scheme="http://niuza.tech/tags/%E6%89%AF%E8%9B%8B/"/>
+    
+      <category term="漫画" scheme="http://niuza.tech/tags/%E6%BC%AB%E7%94%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>谁吞了我的贴吧一楼</title>
+    <link href="http://niuza.tech/20160806/tieba-unusual/"/>
+    <id>http://niuza.tech/20160806/tieba-unusual/</id>
+    <published>2016-08-06T04:38:31.000Z</published>
+    <updated>2016-08-06T05:29:09.340Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天是奥运开幕式，结果我起来之后想着给博客换域名结果没看。不过话说回来奥运会那氛围是在2008年北京奥运会那时候最好，北京奥运会之后我也没怎么关注奥运了。不过今天中午想去看一下贴吧，结果发现贴吧的一楼全部不见了，特别不爽<br>为啥？后来查了一下，原来是今天贴吧一楼全部PO了“一楼献给国家”的广告，结果我浏览器自带的ABP广告屏蔽插件把一楼给吞了，现在可以看看效果了。一楼献给国家了，不能英国的插件给吃了<br><img title="贴吧一楼" alt="今天的贴吧一楼" class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/贴吧一楼.jpg?imageView2/2/w/600"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天是奥运开幕式，结果我起来之后想着给博客换域名结果没看。不过话说回来奥运会那氛围是在2008年北京奥运会那时候最好，北京奥运会之后我也没怎么关注奥运了。不过今天中午想去看一下贴吧，结果发现贴吧的一楼全部不见了，特别不爽&lt;br&gt;为啥？后来查了一下，原来是今天贴吧一楼全部PO
+    
+    </summary>
+    
+      <category term="日记" scheme="http://niuza.tech/categories/%E6%97%A5%E8%AE%B0/"/>
+    
+    
+      <category term="贴吧" scheme="http://niuza.tech/tags/%E8%B4%B4%E5%90%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>以前跟桥哥小燕拍的微电影 - 牛奶盒奇遇记</title>
+    <link href="http://niuza.tech/20160805/my-micro-movie/"/>
+    <id>http://niuza.tech/20160805/my-micro-movie/</id>
+    <published>2016-08-05T11:21:30.000Z</published>
+    <updated>2016-08-06T04:50:33.798Z</updated>
+    
+    <content type="html"><![CDATA[<p>话说上次设计大赛我跟桥哥报名了，当时觉得PS报名的人太多了，于是我们就报了微电影非专业组。构思了几天，想不到我跟桥哥想法异常地一致，同时我在Blur乐队的《Coffee&amp;TV》的MV里面找到了灵感，我们都决定了一个牛奶盒作为主角。后来我，桥哥跟小燕三个人用了两个星期的周末就完成了拍摄道具剪辑，局限于条件我们还是使用了手机来拍摄，至于质量怎么就忽略吧，我们也是拍着玩的哈哈。闲着没事干把当时的东西拿出来了</p>
+<embed src="http://player.youku.com/player.php/sid/XMTY2MTI1ODcyOA==/v.swf" allowfullscreen="true" quality="high" width="480" height="400" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash">
+
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;话说上次设计大赛我跟桥哥报名了，当时觉得PS报名的人太多了，于是我们就报了微电影非专业组。构思了几天，想不到我跟桥哥想法异常地一致，同时我在Blur乐队的《Coffee&amp;amp;TV》的MV里面找到了灵感，我们都决定了一个牛奶盒作为主角。后来我，桥哥跟小燕三个人用了两个星期
+    
+    </summary>
+    
+      <category term="作品" scheme="http://niuza.tech/categories/%E4%BD%9C%E5%93%81/"/>
+    
+    
+      <category term="视频" scheme="http://niuza.tech/tags/%E8%A7%86%E9%A2%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo+Github Pages搭建个人博客详细过程</title>
+    <link href="http://niuza.tech/20160802/build-your-blog/"/>
+    <id>http://niuza.tech/20160802/build-your-blog/</id>
+    <published>2016-08-02T03:10:33.000Z</published>
+    <updated>2016-08-07T10:34:15.630Z</updated>
+    
+    <content type="html"><![CDATA[<p>20160804:<br>提纲貌似和图片不能一起…有空想个办法让右边栏变成提纲，顺便让搜索框悬浮</p>
+<p>20160805:<br>搞了几天终于把自己的博客搞起来了，有空再完善完善，修改一下背景什么的<br>有那个菜单修改有空再写写，我想我要去打机了，有空再看看下面</p>
+<p>这里把我搭建个人博客的过程贴出来了，如果你不想看我那么杂乱，可以去看详细参考 <a href="http://ibruce.info/2013/11/22/hexo-your-blog/" target="_blank" rel="external">http://ibruce.info/2013/11/22/hexo-your-blog/</a><br>当然，这个博客是基于icarus这个博客做的，具体demo请查看 <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="external">https://github.com/ppoffice/hexo-theme-icarus</a><br>建议使用NexT主题，更简单 <a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="external">http://theme-next.iissnan.com/getting-started.html</a><br>配置方面推荐看 <a href="http://www.jianshu.com/p/2640561e96f8" target="_blank" rel="external">http://www.jianshu.com/p/2640561e96f8</a><br><img title="草泥马" alt="我的心情就像..." class="class1 class2" src="http://obc2f9adw.bkt.clouddn.com/static/images/草泥马.gif?imageView2/2/w/600"><br><a id="more"></a></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><blockquote>
+<p>环境： Windows 8.1 x64</p>
+</blockquote>
+<ul>
+<li>安装git</li>
+<li>申请github，下面有配置SSH</li>
+<li>安装NodeJS</li>
+<li>安装Hexo</li>
+<li>安装Markdown编辑器</li>
+<li><a href="http://jingyan.baidu.com/article/9f7e7ec0b17cac6f2815548d.html" target="_blank" rel="external">配置git环境变量</a><h3 id="Git的push操作"><a href="#Git的push操作" class="headerlink" title="Git的push操作"></a>Git的push操作</h3>Git的通用操作，可以在本地做好版本控制后，push到Git的服务器,可以是Github<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># Create a new repository on the command line</div><div class="line">git init </div><div class="line">git add .</div><div class="line">git commit -m &quot;first commit&quot;</div><div class="line">git remote add origin https://github.com/yourId/repoName.git</div><div class="line">git push -u origin master</div><div class="line"># Push an existing repository from the command line</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="Git的pull操作"><a href="#Git的pull操作" class="headerlink" title="Git的pull操作"></a>Git的pull操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 强制覆盖本地文件</div><div class="line">git fetch --all  </div><div class="line">git reset --hard origin/master </div><div class="line">git pull</div></pre></td></tr></table></figure>
+<h3 id="Github配置SSH"><a href="#Github配置SSH" class="headerlink" title="Github配置SSH"></a>Github配置SSH</h3><p><a href="http://jingyan.baidu.com/article/a65957f4e91ccf24e77f9b11.html" target="_blank" rel="external">Github配置SSH连接</a></p>
+<p><a href="http://www.oschina.net/question/780536_121856" target="_blank" rel="external">Github push失败</a></p>
+<h3 id="创建Github-Page项目"><a href="#创建Github-Page项目" class="headerlink" title="创建Github Page项目"></a>创建Github Page项目</h3><p>新建repository不需要符合username.github.io的规则<br><a href="http://jingyan.baidu.com/article/ed2a5d1f3732cb09f7be1745.html" target="_blank" rel="external">应用github pages创建自己的个人博客</a><br>创建成功后在gh-pages分支可以查看项目网页</p>
+<h3 id="购买域名，配置DNS"><a href="#购买域名，配置DNS" class="headerlink" title="购买域名，配置DNS"></a>购买域名，配置DNS</h3><p>购买中文域名去<strong>万网</strong>买，配置DNS请用DNSpod<br>如果是Pages项目病并不需要DNS解析，放个CNAME文件，设置项目的域名，然后域名解析写Github Pages服务器的ip就可以了，详细请查看Github Pages官方帮助</p>
+<p>###　更换域名<br>更换域名后需要修改：<br>_config.yml　修改url<br>多说　更改主页<br>CNAME　更换域名<br>README.MD　可能需要换链接</p>
+<h2 id="创建Hexo博客"><a href="#创建Hexo博客" class="headerlink" title="创建Hexo博客"></a>创建Hexo博客</h2><h3 id="在本地创建Hexo博客"><a href="#在本地创建Hexo博客" class="headerlink" title="在本地创建Hexo博客"></a>在本地创建Hexo博客</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli –g <span class="comment">#安装hexo</span></div><div class="line">npm install hexo-deployer-git --save <span class="comment">#Hexo 3.0后需要安装deploy git</span></div><div class="line">npm install hexo-server --save <span class="comment">#Hexo 3.0后需要 安装server</span></div><div class="line"><span class="comment">#初始化博客，进入博客目录</span></div><div class="line">hexo init floder </div><div class="line"><span class="built_in">cd</span> floder</div></pre></td></tr></table></figure>
+<p><strong>hexo的一些命令</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">hexo new”postName” <span class="comment">#新建文章 #存放在主目录的source下的POST目录下</span></div><div class="line"></div><div class="line">hexo new page”pageName” <span class="comment">#新建页面</span></div><div class="line"></div><div class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></div><div class="line"></div><div class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，’ctrl + c’关闭server）</span></div><div class="line"></div><div class="line">hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></div><div class="line"></div><div class="line">hexo <span class="built_in">help</span> <span class="comment"># 查看帮助</span></div><div class="line"></div><div class="line">hexo version <span class="comment">#查看Hexo的版本</span></div></pre></td></tr></table></figure></p>
+<p><strong>修改端口port</strong></p>
+<p>floder\node_modules\hexo-server\index.js找到port<br><strong>在本地预览hexo博客</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo generate <span class="comment">#生成静态文件,可以省略成hexo g,hexo s,hexo d等等</span></div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
+<h3 id="部署到github"><a href="#部署到github" class="headerlink" title="部署到github"></a>部署到github</h3><p>编辑_config.yml<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="attr">deploy:</span></div><div class="line">  <span class="attr">type:</span> <span class="string">git</span></div><div class="line">  <span class="attr">repository:</span> <span class="attr">https://github.com/zippera/zippera.github.io.git</span></div><div class="line">  <span class="attr">branch:</span> <span class="string">master</span></div><div class="line">  <span class="comment">#冒号前面有空格</span></div></pre></td></tr></table></figure></p>
+<h3 id="github常见问题"><a href="#github常见问题" class="headerlink" title="github常见问题"></a>github常见问题</h3><ul>
+<li>git push后在github上文件夹是灰色的？<br>子文件夹下面有复制下来的仓库，把.git .gitignore文件都删掉，然后重新git add 、git commit、 git push，还是无法push的话先移出文件夹再push删除mode，移回来再push重新建立mode</li>
+<li>怎么建立删除分支？<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">#在本地新建一个分支</div><div class="line">git branch Branch1</div><div class="line">#切换到你的新分支</div><div class="line">git checkout Branch1</div><div class="line">#将新分支发布在github上</div><div class="line">git push origin Branch1</div><div class="line">#在本地删除一个分支</div><div class="line">git branch -d Branch1</div><div class="line">#在github远程端删除一个分支</div><div class="line">git push origin :Branch1</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="解决冲突问题"><a href="#解决冲突问题" class="headerlink" title="解决冲突问题"></a>解决冲突问题</h3><p>mathjax和markdown渲染冲突问题<br>请使用hexo-renderer-pandoc插件，用pandoc去代替默认的markdown渲染器，完美地解决了这个问题<br>主题一般支持mathjax公式，没有的话可以安装hexo-mathjax的插件</p>
+<h3 id="设置CNAME和README"><a href="#设置CNAME和README" class="headerlink" title="设置CNAME和README"></a>设置CNAME和README</h3><ul>
+<li>CNAME<br>在gh-pages目录新建CNAME文件，写域名进去<br>然后在域名服务器那里设置就可以了<br>CNAME可以放在Source文件夹下,不然每次部署都会删除的</li>
+<li>README<br>把README.MD文件的后缀名改成”MDOWN”然后扔到blog/source文件夹下即可，这样hexo不会解析，github也会将其作为MD文件解析</li>
+</ul>
+<h3 id="添加编辑文章和页面-代码高亮"><a href="#添加编辑文章和页面-代码高亮" class="headerlink" title="添加编辑文章和页面,代码高亮"></a>添加编辑文章和页面,代码高亮</h3><ul>
+<li>添加文章<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo new &quot;postName&quot;  #新建博文,其中postName是博文题目</div><div class="line"># 在source/_posts\postName.md</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>之后我们就可以编辑md文件了，Markdown的语法应该网上有很多吧</p>
+<ul>
+<li>代码高亮<br>在代码块开始的时候加语言名例如CSS，支持的语言将会高亮显示<br>如果是icarus主题，文章设置highlight: androidstudio就可以了，自定义高亮更多选项请看icarus/source/css/_highlight</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//效果</span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> </span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isRun</span><span class="params">(<span class="keyword">int</span> year)</span></span>&#123;</div><div class="line">    <span class="keyword">if</span>(year%<span class="number">4</span>==<span class="number">0</span>&amp;&amp;year%<span class="number">100</span>!=<span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">if</span>(year%<span class="number">400</span>==<span class="number">0</span>)</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>添加文章标签或者分类等等<br>tags/category:</li>
+<li>Diary<br><a href="https://hexo.io/zh-cn/docs/front-matter.html" target="_blank" rel="external">添加文章的官方文档</a></li>
+</ul>
+<ul>
+<li>为文章添加提纲<br>icarus主题自带toc插件，在md文件中插入<br>toc: true<br>可以自行修改\themes\icarus\source\css_partial\article.styl 找到toc<br><a href="http://kuangqi.me/tricks/enable-table-of-contents-on-hexo/#淇敼Landscape涓婚鐨別js" target="_blank" rel="external">为文章添加toc</a></li>
+<li>添加文首图片<br>banner</li>
+<li>为文章添加缩略图<br>icarus主题自带缩略图插件，在md文件插入<br>thumbnail: <a href="https://example.com/image.jpg" target="_blank" rel="external">https://example.com/image.jpg</a>  </li>
+<li><p>二级分类</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">categories</div><div class="line">- a</div><div class="line">- b</div></pre></td></tr></table></figure>
+</li>
+<li><p>不使用模板<br>layout: false</p>
+</li>
+<li><p>搜索引擎</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">meta:</div><div class="line">- name=&quot;robots&quot;;content=&quot;noindex, follow&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>修改文章模板scaffolds<br>scaffolds目录下的post.md</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: &#123;&#123; title &#125;&#125;</div><div class="line">date: &#123;&#123; date &#125;&#125;</div><div class="line">tags:</div><div class="line">categories:</div><div class="line">toc:</div><div class="line">thumbnail: http://obc2f9adw.bkt.clouddn.com/static/images/</div><div class="line">banner: http://obc2f9adw.bkt.clouddn.com/static/images/</div><div class="line">---</div><div class="line">&#123;% qnimg 封面.jpg title:封面 alt:有空再完善一下我的博客 &apos;class:class1 class2&apos; extend:?imageView2/2/w/600 %&#125;</div><div class="line"></div><div class="line"></div><div class="line">&lt;!--more--&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>添加categories等等页面<br>先看看站点_config.yml里面的category_dir是不categories<br>添加页面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo n page <span class="string">"categories"</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>更改index.md,layout为categories，comments设置评论功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">title: categories</div><div class="line">layout: &quot;categories&quot;</div><div class="line">type: &quot;categories&quot;</div><div class="line">comments: false</div><div class="line">---</div></pre></td></tr></table></figure></p>
+<p>修改<code>themes/jacman/_config.yml</code>文件<br><figure class="highlight md"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line"><span class="code">    分类: /categories</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h3><p>如果页面中出现中文，应以UTF-8无BOM编码格式，所以不要用win自带的记事本<br>这里推荐<strong> Sublime Text 3 </strong>作为Markdown编辑器<br>也推荐 <a href="http://markdown.xiaoshujiang.com/" target="_blank" rel="external">小书匠Markdown编辑器</a>，在线或者离线都能实现实时预览</p>
+<blockquote>
+<p>参考：<br><a href="http://jingyan.baidu.com/article/d169e186553155436711d846.html" target="_blank" rel="external">ST3编辑器</a><br><a href="http://www.cnblogs.com/IPrograming/p/Sublime-markdown-editor.html" target="_blank" rel="external">Sublime Text作为Markdown编辑器</a><br><a href="http://blog.gt520.com/comt/152.html" target="_blank" rel="external">ST3编辑器添加到右键</a><br><a href="http://jingyan.baidu.com/article/cdddd41c68c32753ca00e157.html" target="_blank" rel="external">添加Sublime Text 3的打开方式</a></p>
+</blockquote>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p> 修改站点下的_config.yml</p>
+<h3 id="常用配置"><a href="#常用配置" class="headerlink" title="常用配置"></a>常用配置</h3><p>url:填你的域名上去<br>permalink 这个是用于设置文件的存放规则:year-:month-:day/:title/ </p>
+<h3 id="一些修改"><a href="#一些修改" class="headerlink" title="一些修改"></a>一些修改</h3><ul>
+<li>_config.yml编译不通过,yml语法极度严格，不通过往往是冒号后面没有空格问题</li>
+<li><p>由于google在天朝大陆被墙，进入themes\landscape\layout_partial，打开head.ejs，删掉第31行fonts.googleapis.com的链接。</p>
+</li>
+<li><p>下载下来jquery-2.0.3.min.js，放到themes\landscape\source\js文件夹中。之后进入themes\landscape\layout_partial，打开after-footer.ejs，将第17行的路径替换为/js/jquery-2.0.3.min.js。</p>
+</li>
+</ul>
+<h3 id="菜单设置"><a href="#菜单设置" class="headerlink" title="菜单设置"></a>菜单设置</h3><p>菜单导航栏设置，配置在主题配置文件下<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="attr">menu:</span></div><div class="line">  <span class="attr">home:</span> <span class="string">/</span></div><div class="line">  <span class="attr">archives:</span> <span class="string">/archives</span></div><div class="line">  <span class="attr">categories:</span> <span class="string">/categories</span></div><div class="line"><span class="attr">tags:</span> <span class="string">/tags</span></div><div class="line">  <span class="attr">commonweal:</span> <span class="string">/404.html</span></div><div class="line">  <span class="attr">about:</span> <span class="string">/about</span></div></pre></td></tr></table></figure></p>
+<p>新增标签页,使用命令hexo new page tags 并将页面类型设置为tags<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date:2016-04-1922:37:08</div><div class="line"><span class="section">type:"tags"</span></div><div class="line">---</div></pre></td></tr></table></figure></p>
+<p>通常情况下你的标签页并不需要评论框，取消评论代码<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">title: tags</div><div class="line">date:2016-04-1922:37:08</div><div class="line">type:"tags"</div><div class="line"><span class="section">comments:false</span></div><div class="line">---</div></pre></td></tr></table></figure></p>
+<h3 id="更换主题"><a href="#更换主题" class="headerlink" title="更换主题"></a>更换主题</h3><p>这里我使用的是icarus主题，下面的一些配置也是根据这个主题来配置<br>不过我觉得NeXT主题更加多人使用扩展也更多，当然有点审美疲劳了<br>icarus是由EJS模板来实现的，集成了比较多的插件，因为不是很多人使用所以没有NeXT那么成熟吧<br>1.开始先复制主题<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git <span class="built_in">clone</span> https://github.com/JamesPan/hexo-theme-icarus.git themes/icarus</div><div class="line">npm install -S hexo-generator-json-content <span class="comment">#安装插件支持</span></div></pre></td></tr></table></figure></p>
+<p>2.修改主题_cinfig.yml ,修改 theme: 要更换的主题名，语言等等<br><a href="https://github.com/ppoffice/hexo-theme-icarus/wiki/Theme" target="_blank" rel="external">icarus主题的官方配置</a></p>
+<p>3.icarus主题中修改markdown中的引用<br>在主题icarus中的mardown使用引用：&gt;的时候会居中出错，<br>\themes\icarus\source\css_partial\article.styl 找到blockquote</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">    <span class="string">blockquote</span></div><div class="line">        <span class="attr">background:</span> <span class="comment">#ddd</span></div><div class="line">        <span class="attr">border-left:</span> <span class="number">5</span><span class="string">px</span> <span class="string">solid</span> <span class="comment">#ccc</span></div><div class="line">        <span class="attr">padding:</span> <span class="number">15</span><span class="string">px</span> <span class="number">20</span><span class="string">px</span></div><div class="line">        <span class="attr">margin-top:</span> <span class="number">10</span><span class="string">px</span></div><div class="line">        <span class="attr">border-left:</span> <span class="number">5</span><span class="string">px</span> <span class="string">solid</span> <span class="comment">#657b83</span></div><div class="line">        <span class="attr">background:</span> <span class="comment">#f6f6f6</span></div><div class="line">        <span class="string">&amp;:before</span></div><div class="line">            <span class="attr">top:</span> <span class="number">20</span><span class="string">px</span></div><div class="line">            <span class="attr">left:</span> <span class="number">10</span><span class="string">px</span></div><div class="line">            <span class="attr">color:</span> <span class="comment">#e2e2e2</span></div><div class="line">            <span class="attr">font-size:</span> <span class="number">32</span><span class="string">px;</span></div><div class="line">            <span class="attr">font-family:</span> <span class="string">FontAwesome</span></div><div class="line">            <span class="attr">text-align:</span> <span class="string">center</span></div><div class="line">            <span class="attr">position:</span> <span class="string">absolute</span></div><div class="line">        <span class="string">footer</span></div><div class="line">            <span class="attr">font-size:</span> <span class="string">font-size</span></div><div class="line">            <span class="attr">margin:</span> <span class="string">line-height</span> <span class="number">0</span></div><div class="line">            <span class="attr">font-family:</span> <span class="string">font-sans</span></div><div class="line">            <span class="string">cite</span></div><div class="line">                <span class="string">&amp;:before</span></div><div class="line">                    <span class="attr">content:</span> <span class="string">"—"</span></div><div class="line">                    <span class="attr">padding:</span> <span class="number">0</span> <span class="number">0.5</span><span class="string">em</span></div></pre></td></tr></table></figure>
+<h3 id="修改网站小图标"><a href="#修改网站小图标" class="headerlink" title="修改网站小图标"></a>修改网站小图标</h3><p>修改themes/icarus/_cinfig.yml 找到favicon</p>
+<h2 id="修改字体"><a href="#修改字体" class="headerlink" title="修改字体"></a>修改字体</h2><p>theme/…/source/vendor/open-sans/fonts/</p>
+<h3 id="配置多说"><a href="#配置多说" class="headerlink" title="配置多说"></a>配置多说</h3><p>1.去多说注册<br>2.themes/icarus/_cinfig.yml 修改duoshuo,加上 刚注册 的二级域名<br>自己去设置一下头像主题什么的<br>3.去多说个人中心设置自定义CSS</p>
+<blockquote>
+<p>记得不要设置解析HTML，可能造成button等属性无法使用自定义CSS</p>
+</blockquote>
+<ul>
+<li>设置头像圆角加转动<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">#ds-reset .ds-avatar img&#123;</div><div class="line">    width:54px;height:54px; /*设置图像的长和宽*/</div><div class="line">    border-radius: 27px;/*设置图像圆角效果,在这里我直接设置了超过width/2的像素，即为圆形了*/</div><div class="line">    -webkit-border-radius: 27px;/*圆角效果：兼容webkit浏览器*/</div><div class="line">    -moz-border-radius:27px;</div><div class="line">    box-shadow: inset 0 -1px 0 #3333sf;/*设置图像阴影效果*/</div><div class="line">    -webkit-box-shadow: inset 0 -1px 0 #3333sf;</div><div class="line">    -webkit-transition: 0.4s;   </div><div class="line">    -webkit-transition: -webkit-transform 0.4s ease-out;</div><div class="line">    transition: transform 0.4s ease-out;/*变化时间设置为0.4秒(变化动作即为下面的图像旋转360读）*/</div><div class="line">        -moz-transition: -moz-transform 0.4s ease-out;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">#ds-reset .ds-avatar img:hover&#123;  /*利用hover设置鼠标悬浮在头像时的CSS样式*/</div><div class="line">    box-shadow: 0 0 10px #fff; rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1);</div><div class="line">    -webkit-box-shadow: 0 0 10px #fff; rgba(255,255,255,.6), inset 0 0 20px rgba(255,255,255,1);</div><div class="line">    transform: rotateZ(360deg);/*图像旋转360度*/</div><div class="line">    -webkit-transform: rotateZ(360deg);</div><div class="line">        -moz-transform: rotateZ(360deg);</div><div class="line">       &#125;</div><div class="line">//设置多说支持消失</div><div class="line">#ds-thread .ds-powered-by&#123;display:none!important;&#125;</div><div class="line"></div><div class="line"></div><div class="line">// 设置发送按钮</div><div class="line">#ds-thread #ds-reset .ds-post-button&#123;font-family: ‘微软雅黑’‘Microsoft Yahei’!important;font-weight: bold;font-size:12px;background:#DADADA !important;color:#877CC8 !important;&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>具体参考的CSS：<br><a href="http://shenchaofei.cn/duoshuo-comment-box-css-custom/328.html" target="_blank" rel="external">WordPress多说评论框各种CSS自定义设置问题收集</a><br><a href="http://www.ldstars.com/css3/66.html" target="_blank" rel="external">多说圆角主题</a><br><a href="http://www.shejidaren.com/use-css3-to-create-a-beautiful-comment-ui.html" target="_blank" rel="external">用CSS3制作漂亮的设计达人留言评论样式 | 设计达人</a><br><a href="http://www.52pojie.cn/thread-355650-1-1.html" target="_blank" rel="external">多说自定义CSS动感头像和多说评论显示User Agent的那些小事</a></p>
+<p>当然你可以去人家的博客查看元素，多说的CSS在head标签里面</p>
+<p>4.给多说配置UA</p>
+<p><a href="http://ssk.91txh.com/209" target="_blank" rel="external">多说回复后显示浏览器及操作系统信息（Useragent)</a></p>
+<ul>
+<li>上传写好的embed.js</li>
+<li><p>如果是icarus主题，请修改duoshuo.ejs里面的embed.js引用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ds.src = (<span class="built_in">document</span>.location.protocol == <span class="string">'https:'</span> ? <span class="string">'https:'</span> : <span class="string">'http:'</span>) + <span class="string">'//obc2f9adw.bkt.clouddn.com/embed.js'</span>;</div></pre></td></tr></table></figure>
+</li>
+<li><p>自定义CSS</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*多说UA开始*/</span></div><div class="line"><span class="selector-tag">span</span><span class="selector-class">.ua</span>&#123;</div><div class="line">    <span class="attribute">margin</span>: <span class="number">0</span> <span class="number">1px</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">color</span>:<span class="number">#FFFFFF</span><span class="meta">!important</span>;</div><div class="line">    <span class="comment">/*text-transform: Capitalize!important;</span></div><div class="line">    float: right!important;</div><div class="line">    line-height: 18px!important;*/</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_other</span><span class="selector-class">.os_other</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#ccc</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#BBB</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_ie</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#428bca</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#357ebd</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_firefox</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#f0ad4e</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#eea236</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_maxthon</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#7373B9</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#7373B9</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_ucweb</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#FF740F</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#d43f3a</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_sogou</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#78ACE9</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#4cae4c</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_2345explorer</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#2478B8</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#4cae4c</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_2345chrome</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#F9D024</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#4cae4c</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_mi</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#FF4A00</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#4cae4c</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_lbbrowser</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#FC9D2E</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#4cae4c</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_chrome</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#EE6252</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#4cae4c</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_qq</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#3D88A8</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#4cae4c</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_apple</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#E95620</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#4cae4c</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.ua_opera</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#d9534f</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#d43f3a</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="selector-class">.os_vista</span>,<span class="selector-class">.os_2000</span>,<span class="selector-class">.os_windows</span>,<span class="selector-class">.os_xp</span>,<span class="selector-class">.os_7</span>,<span class="selector-class">.os_8</span>,<span class="selector-class">.os_8_1</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#39b3d7</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#46b8da</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.os_android</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#98C13D</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#01B171</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.os_ubuntu</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#DD4814</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#01B171</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.os_linux</span> &#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#3A3A3A</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#1F1F1F</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.os_mac</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#666666</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#1F1F1F</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.os_unix</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#006600</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#1F1F1F</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.os_nokia</span>&#123;</div><div class="line">    <span class="attribute">background-color</span>: <span class="number">#014485</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-color</span>: <span class="number">#1F1F1F</span><span class="meta">!important</span>;</div><div class="line">    <span class="attribute">border-radius</span>: <span class="number">4px</span>;</div><div class="line">    <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">5px</span><span class="meta">!important</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><a href="http://www.joryhe.com/2016-05-30-duoshuo_advance_setting_css.html" target="_blank" rel="external">多说优化，高级CSS设置</a></li>
+</ul>
+<h3 id="设置友情链接"><a href="#设置友情链接" class="headerlink" title="设置友情链接"></a>设置友情链接</h3><p>继续修改_config.yml<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Links 通过links来设置友情链接</span></div><div class="line"><span class="attr">links:</span></div><div class="line">  <span class="attr">Hexo:</span> <span class="attr">http://hexo.io</span></div><div class="line">  <span class="string">foam</span> <span class="string">| 我一直在找寻有你的世界: http://zoufeng.net/</span></div></pre></td></tr></table></figure></p>
+<h2 id="添加功能"><a href="#添加功能" class="headerlink" title="添加功能"></a>添加功能</h2><h3 id="添加站长统计"><a href="#添加站长统计" class="headerlink" title="添加站长统计"></a>添加站长统计</h3><p>为博客添加统计，我还没做好，先挖个坑吧有空再看哈哈<br>1.注册CNZZ<br>web_id在配置之后提供的统计代码里面找<br>layout 添加文件为cnzz.ejs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;% if (theme.cnzz)&#123; %&gt;</div><div class="line">Analyse with </div><div class="line">&lt;% &#125; %&gt;</div></pre></td></tr></table></figure>
+<p>/_partial/footer.ejs<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">..PPOffice.&lt;%- partial(&apos;cnzz&apos;) %&gt;</div></pre></td></tr></table></figure></p>
+<p>2.<a href="http://blog.csdn.net/smallcheric/article/details/51049695" target="_blank" rel="external">百度统计</a></p>
+<p>3.最好使用 <a href="http://ibruce.info/2015/04/04/busuanzi/" target="_blank" rel="external">不蒜子</a></p>
+<p>4.LeanCloud</p>
+<blockquote>
+<p>参考<br><a href="http://ibruce.info/2013/12/22/count-views-of-hexo/" target="_blank" rel="external">为hexo博客添加访问次数统计功能</a><br><a href="http://www.iamlj.com/2016/07/add-heat-function-for-hexo/" target="_blank" rel="external">为Hexo Next主题添加热度功能（一）</a><br><a href="http://crescentmoon.info/2014/12/11/popular-widget/" target="_blank" rel="external">使用LeanCloud平台为Hexo博客添加文章浏览量统计组件 | 心怀畏惧</a><br><a href="http://www.cnblogs.com/tengj/p/5365434.html" target="_blank" rel="external">hexo干货系列：（七）hexo安装统计插件</a><br><a href="http://cighao.com/2015/11/30/add-counter-to-hexo/" target="_blank" rel="external">Hexo yilia主题添加网站访客人数统计</a><br><a href="http://www.jeyzhang.com/hexo-next-add-post-views.html" target="_blank" rel="external">Hexo的NexT主题个性化：添加文章阅读量</a></p>
+</blockquote>
+<h3 id="插入视频"><a href="#插入视频" class="headerlink" title="插入视频"></a>插入视频</h3><p>直接上传优酷，上传后优酷可以复制通用iframe代码或者HTML代码<br>禁止自动播放<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;embed id=&quot;emswf&quot; src=&quot;abc.swf&quot; play=&quot;false&quot; flashvars=&quot;autoplay=false&amp;play=false&quot; menu=&quot;false&quot; hidden=&quot;false&quot; loop=&quot;false&quot;&gt;&lt;/embed&gt;</div></pre></td></tr></table></figure></p>
+<h3 id="字数统计"><a href="#字数统计" class="headerlink" title="字数统计"></a>字数统计</h3><p>npm install hexo-wordcount –save<br><a href="https://www.npmjs.com/package/hexo-wordcount" target="_blank" rel="external">hexo-wordcount</a></p>
+<h3 id="添加RSS"><a href="#添加RSS" class="headerlink" title="添加RSS"></a>添加RSS</h3><p>我觉得现在不需要安装啦，需要的看一下</p>
+<p>hexo提供了RSS的生成插件，需要手动安装和设置。步骤如下：</p>
+<p>安装RSS插件到本地：npm install hexo-generator-feed</p>
+<p>开启RSS功能：编辑hexo/_config.yml，添加如下代码：<br>plugins:  - hexo-generator-feed</p>
+<p>在站点添加链接：<br>在themes/light/_config.yml中，编辑 rss: /atom.xml</p>
+<p>在themes/light/layout/_partial/header.ejs中，ul标签之间，添加一样代码<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/atom.xml"</span>&gt;</span>RSS<span class="tag">&lt;/<span class="name">a</span>&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="添加最近访客"><a href="#添加最近访客" class="headerlink" title="添加最近访客"></a>添加最近访客</h3><p><a href="http://www.arao.me/2015/hexo-next-theme-optimize-duoshuo/" target="_blank" rel="external">http://www.arao.me/2015/hexo-next-theme-optimize-duoshuo/</a></p>
+<h3 id="增加404页面"><a href="#增加404页面" class="headerlink" title="增加404页面"></a>增加404页面</h3><p>在source文件夹下面新增404.html,不依赖layout就要在前面加layout: false<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">---</div><div class="line">layout: false</div><div class="line">title: "404 Not Found"</div><div class="line">---</div><div class="line"><span class="meta">&lt;!DOCTYPE HTML&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>404 - 牛杂辉的空间<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"404错误，页面不存在！"</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"content-type"</span> <span class="attr">content</span>=<span class="string">"text/html;charset=utf-8;"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=edge,chrome=1"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"all"</span> /&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"robots"</span> <span class="attr">content</span>=<span class="string">"index,follow"</span>/&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"http://qzonestyle.gtimg.cn/qzone_v6/lostchild/search_children.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="修改页面文章篇数"><a href="#修改页面文章篇数" class="headerlink" title="修改页面文章篇数"></a>修改页面文章篇数</h3><p>这个我也没有设置，先占个坑，有空来填<br>设定首页/归档/标签页面文章的篇数<br>安装以下插件<br>hexo-generator-index<br>hexo-generator-archive<br>hexo-generator-tag</p>
+<p>站点配置文章中设定<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="attr">index_generator:</span></div><div class="line">  <span class="attr">per_page:5</span></div><div class="line"></div><div class="line"><span class="attr">archive_generator:</span></div><div class="line">  <span class="attr">per_page:20</span></div><div class="line">  <span class="attr">yearly:true</span></div><div class="line">  <span class="attr">monthly:true</span></div><div class="line"></div><div class="line"><span class="attr">tag_generator:</span></div><div class="line">  <span class="attr">per_page:10</span></div></pre></td></tr></table></figure></p>
+<p>多说评论组件提供热评文章功能, 仅在文章页面显示<br>站点/主题配置文件中设置<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 多说热评文章 true 或者 false</span></div><div class="line"><span class="attr">duoshuo_hotartical:</span><span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>这些优化我都还没有做，占个坑慢慢搞哈哈</p>
+<h3 id="写一段简单的脚本"><a href="#写一段简单的脚本" class="headerlink" title="写一段简单的脚本"></a>写一段简单的脚本</h3><p>shell脚本，保存为.sh，如果已经安装git和配置git的环境变量之后，在windows环境下直接打开会自动启动git bash<br>虽然git bash可以直接运行shell脚本，但是windows下最好使用Cygwin,git bash也是集成了Cygwin<br>一般用到的部署<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash </div><div class="line">hexo clean #清除hexo编译文件</div><div class="line">hexo g     #重新编译博客</div><div class="line">hexo d     #部署博客</div></pre></td></tr></table></figure></p>
+<p>上传源文件到git<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line">git remote add origin git@github.com:niuza/Blog.git </div><div class="line">为远程Git更名为origin之后push源文件到master分支</div></pre></td></tr></table></figure></p>
+<p>新建文章<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line"><span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"input commit name"</span></div><div class="line"><span class="built_in">read</span> answer</div><div class="line">git add . </div><div class="line">git commit -m <span class="variable">$answer</span></div><div class="line">git push -u origin master</div><div class="line"><span class="built_in">echo</span> <span class="_">-e</span> <span class="string">"Press Any Key To Exit"</span></div><div class="line"><span class="built_in">read</span></div></pre></td></tr></table></figure></p>
+<h3 id="常见插件"><a href="#常见插件" class="headerlink" title="常见插件"></a>常见插件</h3><p>支持RSS：npm install hexo-generator-feed –save<br>生成站点地图：npm install hexo-generator-sitemap –save<br>生成百度站点地图：npm install hexo-generator-baidu-sitemap –save<br>HTML 压缩：npm install hexo-html-minifier –save<br>JavaScript 压缩：npm install hexo-uglify –save<br>CSS 压缩插件：npm install hexo-clean-css –save<br>SEO优化：npm install hexo-generator-seo-friendly-sitemap</p>
+<h3 id="使用七牛做图床"><a href="#使用七牛做图床" class="headerlink" title="使用七牛做图床"></a>使用七牛做图床</h3><p>注意图片名字最好不要有空格</p>
+<p><a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">Hexo七牛同步插件</a></p>
+<p><a href="http://developer.qiniu.com/code/v6/api/kodo-api/index.html#image" target="_blank" rel="external">七牛图片处理API</a></p>
+<h3 id="主题的修改"><a href="#主题的修改" class="headerlink" title="主题的修改"></a>主题的修改</h3><p>简单介绍了一下如何去修改主题 <a href="http://www.huangyunkun.com/2014/03/18/hexo_ejs_template/" target="_blank" rel="external">Hexo模板系统和pacman的修改</a></p>
+<p>修改背景图，添加Fork图标什么的 <a href="http://www.jianshu.com/p/70343b7c2fd3" target="_blank" rel="external">Hexo 主题Light修改教程</a></p>
+<p>如果主题里面没有toc插件和归档插件，参考这个修改 <a href="http://www.ituring.com.cn/article/199624" target="_blank" rel="external">Hexo站点中添加文章目录以及归档</a></p>
+<p>多说添加最近访客 <a href="http://www.arao.me/2015/hexo-next-theme-optimize-duoshuo/" target="_blank" rel="external">动动手指，给你的Hexo站点添加最近访客（多说篇）</a></p>
+<p>添加留言页面，修改title,swiftype站内搜索等等 <a href="http://www.arao.me/2015/hexo-next-theme-optimize-base/" target="_blank" rel="external">动动手指，NexT主题与Hexo更搭哦（基础篇）</a></p>
+<p>增加简历类型 <a href="http://blog.zanlabs.com/2015/01/02/add-resume-type-to-hexo-under-pacman-theme/" target="_blank" rel="external">Pacman主题下给Hexo增加简历类型</a></p>
+<p>Next主题底部添加自定义信息 <a href="http://www.joryhe.com/2016-06-04-simple_to_create_something_to_all_article_of_buttom.html" target="_blank" rel="external">为所有文章底部统一放点什么,就这么简单(易)</a></p>
+<p>修改导航 <a href="http://www.joryhe.com/2016-05-17-hexo-series-for-tips-01.html" target="_blank" rel="external">HEXO技巧分享-文章列表实现</a></p>
+<p>添加目录，添加相册 <a href="https://joway.wang/posts/Hexo/2016-03-18-hexo-base.html" target="_blank" rel="external">Hexo折腾记——基本配置篇</a></p>
+<p>添加网页特效 <a href="http://www.iamlj.com/2016/08/add-special-effect-harlem-shake-for-hexo/" target="_blank" rel="external">为Hexo Next主题添加哈林摇特效（五）</a></p>
+<p>添加音乐播放器 <a href="http://www.iamlj.com/2016/07/add-music-player-function-for-hexo/" target="_blank" rel="external">为Hexo Next主题添加音乐播放器功能（二）</a></p>
+<p>添加照片流 <a href="https://yq.aliyun.com/articles/4200" target="_blank" rel="external">为 Hexo 博客做一个照片流，分享你喜欢的书和电影</a></p>
+<h3 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h3><p>性能优化，备份，添加README等等<a href="https://segmentfault.com/a/1190000003710962?_ea=336354" target="_blank" rel="external">hexo博客搭建时遇到的一些问题</a></p>
+<p>备份等 <a href="https://segmentfault.com/a/1190000003710980" target="_blank" rel="external">利用git解决hexo博客多PC间同步问题</a></p>
+<p>CDN加速，域名解析等等<a href="http://www.joryhe.com/2016-06-05-hexo_site_seo_speed_more_optimization.html#" target="_blank" rel="external">Hexo博客优化，如何加快你的博客访问速度(精)</a></p>
+<p>详细的优化 <a href="http://www.joryhe.com/categories/ittech/%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF/hexo/HEXO%E4%BC%98%E5%8C%96/" target="_blank" rel="external">分类: HEXO优化 | JORY’S BLOG</a></p>
+<p>一些技巧 <a href="http://www.joryhe.com/categories/ittech/%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF/hexo/HEXO%E8%BF%9B%E9%98%B6/" target="_blank" rel="external">分类: HEXO进阶 | JORY’S BLOG</a></p>
+<p>压缩，预加载，SEO优化 等等 <a href="https://yq.aliyun.com/articles/8608" target="_blank" rel="external">Hexo折腾记——性能优化篇</a></p>
+<p>自动部署到七牛和Github <a href="https://joway.wang/posts/Hexo/2016-03-19-Hexo-deploy.html" target="_blank" rel="external">Hexo 折腾记——自动部署篇</a></p>
+<p>多说优化 <a href="http://www.arao.me/2015/make-duoshuo-faster-qiniu-cdn/" target="_blank" rel="external">多说评论不稳定，加载速度慢优化方法</a></p>
+<p><a href="http://www.tuicool.com/articles/3muYraF" target="_blank" rel="external">一个Shell脚本方便你的Hexo博客写作 - 推酷</a></p>
+<h3 id="部署到个人VPS"><a href="#部署到个人VPS" class="headerlink" title="部署到个人VPS"></a>部署到个人VPS</h3><p>Hexo运行在VPS的在线写作 <a href="http://xhay1122.com/2016/02/26/2016-02-26-HexoToOnline/#more" target="_blank" rel="external">Hexo在线运行</a></p>
+<p><a href="http://www.cnblogs.com/whitewolf/archive/2013/04/14/3019838.html" target="_blank" rel="external">利用Travis CI 让你的github项目持续构建(Node.js为例)</a></p>
+<p><a href="http://www.swiftyper.com/2016/04/17/deploy-hexo-with-git-hook/" target="_blank" rel="external">使用 Git Hook 自动部署 Hexo 到个人 VPS </a></p>
+<h2 id="工具与参考"><a href="#工具与参考" class="headerlink" title="工具与参考"></a>工具与参考</h2><h3 id="推荐工具"><a href="#推荐工具" class="headerlink" title="推荐工具"></a>推荐工具</h3><p>取色工具：TakeColor 8.0 CN<br>笔记同步工具：为知笔记<br>七牛图床：<a href="http://yotuku.cn/" target="_blank" rel="external">http://yotuku.cn/</a></p>
+<h3 id="常用网站"><a href="#常用网站" class="headerlink" title="常用网站"></a>常用网站</h3><p><a href="http://www.easyicon.net/" target="_blank" rel="external">图标下载，ICON(PNG/ICO/ICNS)图标搜索下载 | EASYICON.NET</a></p>
+<p><a href="http://www.yeahzan.com/fa/facss.html" target="_blank" rel="external">FontAwesome图标CSS样式参考</a></p>
+<h3 id="制作工具"><a href="#制作工具" class="headerlink" title="制作工具"></a>制作工具</h3><p><a href="http://tool.lu/favicon" target="_blank" rel="external">favicon制作 - 在线工具</a><br><a href="http://www.makepic.com/email.php" target="_blank" rel="external">MakePic.com</a><br><a href="http://creatr.cc/creatr/" target="_blank" rel="external">Web2.0 - Logo Creatr</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">官方中文文档</a><br><a href="http://blog.csdn.net/wx_962464/article/details/44786929" target="_blank" rel="external">常见问题</a><br><a href="http://www.zipperary.com/2013/05/28/hexo-guide-2/" target="_blank" rel="external">简单步骤</a><br><a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">详细步骤</a><br><a href="https://zhuanlan.zhihu.com/p/20583019" target="_blank" rel="external">更换主题和同步</a><br><a href="http://www.jianshu.com/p/3e341d86acd2" target="_blank" rel="external">插件</a></p>
+<h3 id="不错的博客"><a href="#不错的博客" class="headerlink" title="不错的博客"></a>不错的博客</h3><p><a href="https://blog.jamespan.me" target="_blank" rel="external">James Pan’s Blog</a><br><a href="http://peihao.space/" target="_blank" rel="external">窗外临街</a><br><a href="http://www.iamlj.com/" target="_blank" rel="external">Jing’s Blog</a><br><a href="http://www.yuedongxu.cn/" target="_blank" rel="external">SHOW TIME</a><br><a href="https://github.com/winwill2012/hexo" target="_blank" rel="external">winwill2012博客github备份</a><br><a href="http://lishichao.com/2016/04/13/%E8%B0%88%E4%B8%80%E4%B8%8B%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2/" target="_blank" rel="external">谈一下我的博客</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;20160804:&lt;br&gt;提纲貌似和图片不能一起…有空想个办法让右边栏变成提纲，顺便让搜索框悬浮&lt;/p&gt;
+&lt;p&gt;20160805:&lt;br&gt;搞了几天终于把自己的博客搞起来了，有空再完善完善，修改一下背景什么的&lt;br&gt;有那个菜单修改有空再写写，我想我要去打机了，有空再看看下面&lt;/p&gt;
+&lt;p&gt;这里把我搭建个人博客的过程贴出来了，如果你不想看我那么杂乱，可以去看详细参考 &lt;a href=&quot;http://ibruce.info/2013/11/22/hexo-your-blog/&quot;&gt;http://ibruce.info/2013/11/22/hexo-your-blog/&lt;/a&gt;&lt;br&gt;当然，这个博客是基于icarus这个博客做的，具体demo请查看 &lt;a href=&quot;https://github.com/ppoffice/hexo-theme-icarus&quot;&gt;https://github.com/ppoffice/hexo-theme-icarus&lt;/a&gt;&lt;br&gt;建议使用NexT主题，更简单 &lt;a href=&quot;http://theme-next.iissnan.com/getting-started.html&quot;&gt;http://theme-next.iissnan.com/getting-started.html&lt;/a&gt;&lt;br&gt;配置方面推荐看 &lt;a href=&quot;http://www.jianshu.com/p/2640561e96f8&quot;&gt;http://www.jianshu.com/p/2640561e96f8&lt;/a&gt;&lt;br&gt;&lt;img title=&quot;草泥马&quot; alt=&quot;我的心情就像...&quot; class=&quot;class1 class2&quot; src=&quot;http://obc2f9adw.bkt.clouddn.com/static/images/草泥马.gif?imageView2/2/w/600&quot;&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="编程" scheme="http://niuza.tech/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    
+      <category term="Hexo" scheme="http://niuza.tech/tags/Hexo/"/>
+    
+      <category term="Blog" scheme="http://niuza.tech/tags/Blog/"/>
+    
+  </entry>
+  
+</feed>
